@@ -44,7 +44,7 @@ struct Movie {
     score = dict
       .valueForKey("metascore", asType: String.self)
       .map { $0.splitWithSeparator("/") }
-      .map { $0.first.getOrElse("0") }
+      .flatMap { $0.first }
       .flatMap { Float($0) }
       .map { $0/Float(10) }
       .getOrElse(0)

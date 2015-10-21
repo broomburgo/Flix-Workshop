@@ -12,16 +12,3 @@ func getMoviesFromFileNamed(fileName: String) throws -> [Movie]
   return dicts.map(Movie.init)
 }
 
-//func getMoviesFromFileNamed(fileName: String) throws -> [Movie]
-//{
-//  let data = NSBundle.mainBundle()
-//    .pathForResource(fileName, ofType: nil)
-//    .flatMap { NSData(contentsOfFile: $0) }
-//  
-//  let dicts = try data.flatMap {
-//    try NSJSONSerialization.JSONObjectWithData($0, options: NSJSONReadingOptions.AllowFragments) as? [[String : AnyObject]]
-//  }
-//  
-//  return dicts.getOrElse([]).map(Movie.init)
-//}
-
