@@ -15,6 +15,7 @@
 		383D28E71BD79BCB003A810B /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383D28E61BD79BCB003A810B /* Tools.swift */; settings = {ASSET_TAGS = (); }; };
 		383D28EF1BD79FB5003A810B /* FlixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383D28EE1BD79FB5003A810B /* FlixTests.swift */; };
 		383D28F91BD7C84E003A810B /* top3.json in Resources */ = {isa = PBXBuildFile; fileRef = 383D28F81BD7C84E003A810B /* top3.json */; settings = {ASSET_TAGS = (); }; };
+		383D28FB1BD7CF66003A810B /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383D28FA1BD7CF66003A810B /* Functions.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		383D28EE1BD79FB5003A810B /* FlixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlixTests.swift; sourceTree = "<group>"; };
 		383D28F01BD79FB5003A810B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		383D28F81BD7C84E003A810B /* top3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = top3.json; sourceTree = "<group>"; };
+		383D28FA1BD7CF66003A810B /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			children = (
 				383D28E41BD79ADF003A810B /* Types.swift */,
 				383D28E61BD79BCB003A810B /* Tools.swift */,
+				383D28FA1BD7CF66003A810B /* Functions.swift */,
 			);
 			name = Elements;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				383D28E51BD79ADF003A810B /* Types.swift in Sources */,
 				383D28D21BD79796003A810B /* ViewController.swift in Sources */,
 				383D28D01BD79796003A810B /* AppDelegate.swift in Sources */,
+				383D28FB1BD7CF66003A810B /* Functions.swift in Sources */,
 				383D28E71BD79BCB003A810B /* Tools.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
