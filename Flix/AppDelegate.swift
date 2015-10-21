@@ -9,7 +9,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
   {
-    configureWithRootViewControllerType(ViewController)
+    configureWithRootViewControllerType(ViewController.self, embedInNavController: true)
     return true
   }
 
@@ -17,17 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 
 extension AppDelegate
 {
-  func configureWithRootViewControllerType <T: UIViewController> (type: T.Type)
+  func configureWithRootViewControllerType <T: UIViewController> (type: T.Type, embedInNavController: Bool)
   {
+    guard
+      let className = NSStringFromClass(T.self).componentsSeparatedByString(".").last
+      else { fatalError("cannot extract nib name from \(NSStringFromClass(T.self))") }
+    
     window = UIWindow(frame: UIScreen.mainScreen().bounds)
-    if let className = NSStringFromClass(T.self).componentsSeparatedByString(".").last
-    {
-      window?.rootViewController = T(nibName: className, bundle: nil)
-    }
-    else
-    {
-      fatalError("cannot extract nib name from \(NSStringFromClass(T.self))")
-    }
+    let rootViewController = T(nibName: className, bundle: nil)
+    window?.rootViewController = embedInNavController ? UINavigationController(rootViewController: rootViewController) : rootViewController
     window?.makeKeyAndVisible()
   }
 }

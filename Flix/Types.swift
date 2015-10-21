@@ -50,3 +50,29 @@ struct Movie {
       .getOrElse(0)
   }
 }
+
+enum Comparison: Int
+{
+  case Ascending = 1
+  case Same = 0
+  case Descending = -1
+}
+
+typealias MovieFilter = Movie -> Bool
+typealias MovieComparator = (Movie,Movie) -> Comparison
+
+struct MovieListModifier
+{
+  let filter: MovieFilter
+  let comparator: MovieComparator
+  
+  static func empty() -> MovieListModifier
+  {
+    return MovieListModifier(
+      filter: { _ in true },
+      comparator: { _ in .Same }
+    )
+  }
+}
+
+

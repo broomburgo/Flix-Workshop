@@ -1,6 +1,12 @@
 
 import Foundation
 
+infix operator • { associativity left precedence 140 }
+func • <A,B,C> (left: B -> C, right: A -> B) -> A -> C
+{
+  return { left(right($0)) }
+}
+
 func getMoviesFromFileNamed(fileName: String) throws -> [Movie]
 {
   guard
@@ -10,5 +16,15 @@ func getMoviesFromFileNamed(fileName: String) throws -> [Movie]
     else { return [] }
 
   return dicts.map(Movie.init)
+}
+
+func isOrderedBefore(comparison: Comparison) -> Bool
+{
+  switch comparison
+  {
+  case .Ascending: return true
+  case .Same: return false
+  case .Descending: return false
+  }
 }
 

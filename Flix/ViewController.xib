@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController" customModule="Flix" customModuleProvider="target">
             <connections>
+                <outlet property="tableView" destination="0XQ-Jv-q0g" id="jLX-kM-IhC"/>
                 <outlet property="view" destination="iN0-l3-epB" id="xVM-Om-FZT"/>
             </connections>
         </placeholder>
@@ -14,20 +15,25 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cH-mh-jcR">
-                    <rect key="frame" x="288" y="289.5" width="24" height="20.5"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0XQ-Jv-q0g">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <animations/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Bzu-eX-TsC"/>
+                        <outlet property="delegate" destination="-1" id="Mzk-BC-4PU"/>
+                    </connections>
+                </tableView>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="9cH-mh-jcR" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="SQF-CR-nHD"/>
-                <constraint firstItem="9cH-mh-jcR" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="cno-Mi-dbf"/>
+                <constraint firstItem="0XQ-Jv-q0g" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AkK-Wt-qRN"/>
+                <constraint firstAttribute="bottom" secondItem="0XQ-Jv-q0g" secondAttribute="bottom" id="Mbt-FQ-v5L"/>
+                <constraint firstAttribute="trailing" secondItem="0XQ-Jv-q0g" secondAttribute="trailing" id="OWY-Lu-h0d"/>
+                <constraint firstItem="0XQ-Jv-q0g" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jm5-oC-8t8"/>
             </constraints>
+            <point key="canvasLocation" x="515" y="389"/>
         </view>
     </objects>
 </document>

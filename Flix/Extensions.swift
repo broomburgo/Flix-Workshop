@@ -31,3 +31,18 @@ extension String
       .map { String($0) }
   }
 }
+
+extension NSComparisonResult
+{
+  init(withComparison comparison: Comparison)
+  {
+    switch comparison {
+    case .Ascending:
+      self = NSComparisonResult.OrderedAscending
+    case .Same:
+      self = NSComparisonResult.OrderedSame
+    case .Descending:
+      self = NSComparisonResult.OrderedDescending
+    }
+  }
+}

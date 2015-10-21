@@ -45,6 +45,45 @@ class FlixTests: XCTestCase
       XCTAssertTrue(false)
     }
   }
+  
+  func testFuture()
+  {
+    let expectedValue = 3
+    let wrongValue = 10
+   
+    let futureExpectation1 = expectationWithDescription("futureExpectation1")
+    let futureExpectation2 = expectationWithDescription("futureExpectation2")
+    let futureExpectation3 = expectationWithDescription("futureExpectation3")
+    let futureExpectation4 = expectationWithDescription("futureExpectation4")
+    
+    let future1 = Future<Int>()
+    
+    future1
+      .onComplete { value in
+        XCTAssertEqual(value, expectedValue)
+        futureExpectation1.fulfill()
+      }
+      .onComplete { value in
+        XCTAssertEqual(value, expectedValue)
+        futureExpectation2.fulfill()
+    }
+    
+    future1.completeWith(expectedValue)
+    
+    future1.onComplete { value in
+      XCTAssertEqual(value, expectedValue)
+      futureExpectation3.fulfill()
+    }
+    
+    future1.completeWith(wrongValue)
+
+    future1.onComplete { value in
+      XCTAssertEqual(value, expectedValue)
+      futureExpectation4.fulfill()
+    }
+    
+    waitForExpectationsWithTimeout(1, handler: nil)
+  }
 }
 
 func assertMovies(movies: [Movie])
