@@ -1,0 +1,161 @@
+ [
+  {
+  "countries": [
+                "USA"
+                ],
+  "directors": [
+                {
+                "name": "Frank Darabont",
+                "nameId": "nm0001104"
+                }
+                ],
+  "filmingLocations": [
+                       "St. Croix",
+                       "U.S. Virgin Islands"
+                       ],
+  "genres": [
+             "Crime",
+             "Drama"
+             ],
+  "idIMDB": "tt0111161",
+  "languages": [
+                "English"
+                ],
+  "metascore": "80/100",
+  "originalTitle": "",
+  "plot": "Andy Dufresne is a young and successful banker whose life changes drastically when he is convicted and sentenced to life imprisonment for the murder of his wife and her lover. Set in the 1940s, the film shows how Andy, with the help of his friend Red, the prison entrepreneur, turns out to be a most unconventional prisoner.",
+  "ranking": 1,
+  "rated": "R",
+  "rating": "9.3",
+  "releaseDate": "19941014",
+  "runtime": [
+              "142 min"
+              ],
+  "simplePlot": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+  "title": "The Shawshank Redemption",
+  "type": "Movie",
+  "urlIMDB": "http://www.imdb.com/title/tt0111161",
+  "urlPoster": "http://ia.media-imdb.com/images/M/MV5BODU4MjU4NjIwNl5BMl5BanBnXkFtZTgwMDU2MjEyMDE@._V1_SX214_AL_.jpg",
+  "votes": "1,533,914",
+  "writers": [
+              {
+              "name": "Stephen King",
+              "nameId": "nm0000175"
+              },
+              {
+              "name": "Frank Darabont",
+              "nameId": "nm0001104"
+              }
+              ],
+  "year": "1994"
+  },
+  {
+  "countries": [
+                "USA"
+                ],
+  "directors": [
+                {
+                "name": "Francis Ford Coppola",
+                "nameId": "nm0000338"
+                }
+                ],
+  "filmingLocations": [
+                       "NY Eye and Ear Infirmary",
+                       "2nd Avenue & East 13th Street",
+                       "New York City",
+                       "New York",
+                       "USA"
+                       ],
+  "genres": [
+             "Crime",
+             "Drama"
+             ],
+  "idIMDB": "tt0068646",
+  "languages": [
+                "English",
+                "Italian",
+                "Latin"
+                ],
+  "metascore": "100/100",
+  "originalTitle": "",
+  "plot": "When the aging head of a famous crime family decides to transfer his position to one of his subalterns, a series of unfortunate events start happening to the family, and a war begins between all the well-known families leading to insolence, deportation, murder and revenge, and ends with the favorable successor being finally chosen.",
+  "ranking": 2,
+  "rated": "R",
+  "rating": "9.2",
+  "releaseDate": "19720324",
+  "runtime": [
+              "175 min"
+              ],
+  "simplePlot": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+  "title": "The Godfather",
+  "type": "Movie",
+  "urlIMDB": "http://www.imdb.com/title/tt0068646",
+  "urlPoster": "http://ia.media-imdb.com/images/M/MV5BMjEyMjcyNDI4MF5BMl5BanBnXkFtZTcwMDA5Mzg3OA@@._V1_SX214_AL_.jpg",
+  "votes": "1,051,056",
+  "writers": [
+              {
+              "name": "Mario Puzo",
+              "nameId": "nm0701374"
+              },
+              {
+              "name": "Francis Ford Coppola",
+              "nameId": "nm0000338"
+              }
+              ],
+  "year": "1972"
+  },
+  {
+  "countries": [
+                "USA",
+                "UK"
+                ],
+  "directors": [
+                {
+                "name": "Christopher Nolan",
+                "nameId": "nm0634240"
+                }
+                ],
+  "filmingLocations": [
+                       "Times Square",
+                       "Causeway Bay",
+                       "Hong Kong"
+                       ],
+  "genres": [
+             "Action",
+             "Crime",
+             "Drama"
+             ],
+  "idIMDB": "tt0468569",
+  "languages": [
+                "English",
+                "Mandarin"
+                ],
+  "metascore": "82/100",
+  "originalTitle": "",
+  "plot": "Batman raises the stakes in his war on crime. With the help of Lieutenant Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the city streets. The partnership proves to be effective, but they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as The Joker.",
+  "ranking": 4,
+  "rated": "PG-13",
+  "rating": "9.0",
+  "releaseDate": "20080718",
+  "runtime": [
+              "152 min"
+              ],
+  "simplePlot": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, the caped crusader must come to terms with one of the greatest psychological tests of his ability to fight injustice.",
+  "title": "The Dark Knight",
+  "type": "Movie",
+  "urlIMDB": "http://www.imdb.com/title/tt0468569",
+  "urlPoster": "http://ia.media-imdb.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SY317_CR0,0,214,317_AL_.jpg",
+  "votes": "1,509,565",
+  "writers": [
+              {
+              "name": "Jonathan Nolan",
+              "nameId": "nm0634300"
+              },
+              {
+              "name": "Christopher Nolan",
+              "nameId": "nm0634240"
+              }
+              ],
+  "year": "2008"
+  }
+  ]
