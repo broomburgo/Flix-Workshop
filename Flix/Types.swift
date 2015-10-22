@@ -40,13 +40,10 @@ public struct Movie {
     plot = dict
       .valueForKey("plot", asType: String.self)
       .getOrElse(unknown)
-    
+        
     score = dict
-      .valueForKey("metascore", asType: String.self)
-      .map { $0.splitWithSeparator("/") }
-      .flatMap { $0.first }
-      .flatMap { Float($0) }
-      .map { $0/Float(10) }
+      .valueForKey("rating", asType: String.self)
+      .flatMap(Float.init)
       .getOrElse(0)
   }
 }
