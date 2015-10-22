@@ -9,6 +9,8 @@ public struct Movie {
   public let genres: [String]
   public let plot: String
   public let score: Float
+  public let rated: String
+  public let runtimeMinutes: Int
   
   public init(dict: [String:AnyObject])
   {
@@ -44,6 +46,17 @@ public struct Movie {
     score = dict
       .valueForKey("rating", asType: String.self)
       .flatMap(Float.init)
+      .getOrElse(0)
+    
+    rated = dict
+      .valueForKey("rated", asType: String.self)
+      .getOrElse("NOT RATED")
+    
+    runtimeMinutes = dict
+      .valueForKey("runtime", asType: Array<String>.self)
+      .flatMap { $0.first }
+      .map { $0.trim(" min") }
+      .flatMap { Int($0) }
       .getOrElse(0)
   }
 }

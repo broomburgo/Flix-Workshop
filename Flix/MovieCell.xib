@@ -25,26 +25,40 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Bu5-vy-iEg">
-                                <rect key="frame" x="0.0" y="30" width="165" height="130"/>
+                                <rect key="frame" x="0.0" y="30" width="238" height="130"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="aed-f9-8Sh">
-                                        <rect key="frame" x="0.0" y="0.0" width="133" height="38"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="238" height="38"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="n1C-wR-vbb">
-                                                <rect key="frame" x="0.0" y="0.0" width="70" height="15"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="175.5" height="14.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="B3i-XE-HKA">
-                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="15"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="175.5" height="14.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wJV-Kc-xEa">
-                                                                <rect key="frame" x="0.0" y="0.0" width="25" height="15"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="25" height="14.5"/>
                                                                 <animations/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5ZI-qV-U36">
-                                                                <rect key="frame" x="37" y="0.0" width="33" height="15"/>
+                                                                <rect key="frame" x="37" y="0.0" width="33" height="14.5"/>
+                                                                <animations/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hbj-dS-GJa">
+                                                                <rect key="frame" x="82" y="0.0" width="48.5" height="14.5"/>
+                                                                <animations/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Rated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="080-yp-AKx">
+                                                                <rect key="frame" x="142.5" y="0.0" width="33" height="14.5"/>
                                                                 <animations/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -57,7 +71,7 @@
                                                 <animations/>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genres" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="e7h-HT-oEI">
-                                                <rect key="frame" x="92" y="0.0" width="41" height="15"/>
+                                                <rect key="frame" x="197.5" y="0.0" width="40.5" height="14.5"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -67,17 +81,17 @@
                                         <animations/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Vdl-OW-qer">
-                                        <rect key="frame" x="0.0" y="46" width="165" height="38"/>
+                                        <rect key="frame" x="0.0" y="46" width="164.5" height="38"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Directors:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="1P7-ee-Clb">
-                                                <rect key="frame" x="0.0" y="0.0" width="56" height="15"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="55.5" height="14.5"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="director1,director2" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="F3l-Ze-nlw">
-                                                <rect key="frame" x="60" y="0.0" width="105" height="15"/>
+                                                <rect key="frame" x="59.5" y="0.0" width="105" height="14.5"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -90,14 +104,14 @@
                                         <rect key="frame" x="0.0" y="92" width="129" height="38"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Writers:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="j2l-L2-Oiq">
-                                                <rect key="frame" x="0.0" y="0.0" width="45" height="15"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="44.5" height="14.5"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="writer1,writer2" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UK3-9W-jHs">
-                                                <rect key="frame" x="49" y="0.0" width="81" height="15"/>
+                                                <rect key="frame" x="48.5" y="0.0" width="80.5" height="14.5"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -125,7 +139,9 @@
             <connections>
                 <outlet property="directorsCaptionLabel" destination="1P7-ee-Clb" id="Yrz-v5-tDx"/>
                 <outlet property="directorsLabel" destination="F3l-Ze-nlw" id="cfn-E7-v1G"/>
+                <outlet property="durationLabel" destination="hbj-dS-GJa" id="rE6-mc-17H"/>
                 <outlet property="genresLabel" destination="e7h-HT-oEI" id="5V2-WH-XNK"/>
+                <outlet property="ratedLabel" destination="080-yp-AKx" id="7h4-ta-eu6"/>
                 <outlet property="scoreLabel" destination="5ZI-qV-U36" id="Zj8-nW-TfH"/>
                 <outlet property="titleLabel" destination="yfU-ee-gUQ" id="0Sp-DK-lLd"/>
                 <outlet property="writersCaptionLabel" destination="j2l-L2-Oiq" id="LSJ-IV-Sem"/>

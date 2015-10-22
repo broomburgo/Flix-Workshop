@@ -7,6 +7,8 @@ class MovieCell: UITableViewCell
   @IBOutlet weak var yearLabel: UILabel!
   @IBOutlet weak var scoreLabel: UILabel!
   @IBOutlet weak var genresLabel: UILabel!
+  @IBOutlet weak var durationLabel: UILabel!
+  @IBOutlet weak var ratedLabel: UILabel!
   @IBOutlet weak var directorsCaptionLabel: UILabel!
   @IBOutlet weak var directorsLabel: UILabel!
   @IBOutlet weak var writersCaptionLabel: UILabel!
@@ -26,6 +28,8 @@ class MovieCell: UITableViewCell
     titleLabel.text = movie.title
     yearLabel.text = "\(movie.year)"
     scoreLabel.text = "\(movie.score)"
+    durationLabel.text = "\(movie.runtimeMinutes) min"
+    ratedLabel.text = movie.rated
     
     let connector = ", "
     
