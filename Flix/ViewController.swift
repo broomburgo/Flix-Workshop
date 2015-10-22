@@ -37,7 +37,7 @@ class ViewController: UIViewController
     title = "Flix"
     tableView.reloadData()
   }
-  
+    
   func reloadWithModifier(newModifier: MovieListModifier)
   {
     modifier = newModifier

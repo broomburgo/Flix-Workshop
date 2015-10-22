@@ -9,6 +9,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
   {
+    setupAppearance()
     configureWithRootViewControllerType(ViewController.self, embedInNavController: true)
     return true
   }
@@ -28,4 +29,13 @@ extension AppDelegate
     window?.rootViewController = embedInNavController ? UINavigationController(rootViewController: rootViewController) : rootViewController
     window?.makeKeyAndVisible()
   }
+}
+
+func setupAppearance()
+{
+  UINavigationBar.appearance().barStyle = .Black
+  UINavigationBar.appearance().translucent = false
+  UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+  UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+  UINavigationBar.appearance().barTintColor = UIColor(red: 0.3, green: 0.1, blue: 0.6, alpha: 1)
 }
