@@ -1,7 +1,7 @@
 
 import UIKit
 
-public class MovieCell: UITableViewCell
+class MovieCell: UITableViewCell
 {
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var yearLabel: UILabel!
@@ -12,16 +12,16 @@ public class MovieCell: UITableViewCell
   @IBOutlet weak var writersCaptionLabel: UILabel!
   @IBOutlet weak var writersLabel: UILabel!
   
-  public static let defaultHeight = Float(100)
-  public static let defaultIdentifier = "CellIdentifier"
+  static let defaultHeight = Float(100)
+  static let defaultIdentifier = "CellIdentifier"
   
-  public static func cell(indentifier identifier: String) -> MovieCell
+  static func cell(indentifier identifier: String) -> MovieCell
   {
     let nibElements = UINib(nibName: "MovieCell", bundle: nil).instantiateWithOwner(nil, options: nil)
     return nibElements.first as! MovieCell
   }
   
-  public func setMovie(movie: Movie) -> MovieCell
+  func setMovie(movie: Movie) -> MovieCell
   {
     titleLabel.text = movie.title
     yearLabel.text = "\(movie.year)"

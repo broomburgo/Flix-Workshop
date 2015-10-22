@@ -34,7 +34,30 @@ class ViewController: UIViewController
   {
     super.viewDidLoad()
     title = "Flix"
+    navigationItem.backBarButtonItem = UIBarButtonItem(
+      title: "Movies",
+      style: .Plain,
+      target: nil,
+      action: nil
+    )
+    navigationItem.rightBarButtonItem = UIBarButtonItem(
+      barButtonSystemItem: .Edit,
+      target: self,
+      action: Selector("didTapEdit")
+    )
     tableView.reloadData()
+  }
+  
+  func didTapEdit()
+  {
+    let filterController = FilterController()
+    
+    navigationController?.pushViewController(filterController, animated: true)
+    
+    filterController.future.onComplete { [unowned self] newModifier in
+      self.reloadWithModifier(newModifier)
+      self.navigationController?.popViewControllerAnimated(true)
+    }
   }
     
   func reloadWithModifier(newModifier: MovieListModifier)
