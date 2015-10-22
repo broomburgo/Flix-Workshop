@@ -37,5 +37,7 @@ func setupAppearance()
   UINavigationBar.appearance().translucent = false
   UINavigationBar.appearance().tintColor = UIColor.whiteColor()
   UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-  UINavigationBar.appearance().barTintColor = UIColor(red: 0.3, green: 0.1, blue: 0.6, alpha: 1)
+  UINavigationBar.appearance().barTintColor = flixColor
+  
+  UILabel.appearanceWhenContainedInInstancesOfClasses([MovieCell.self]).textColor = cellTextColor
 }

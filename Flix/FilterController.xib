@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilterController" customModule="Flix" customModuleProvider="target">
             <connections>
+                <outlet property="tableView" destination="ljq-X6-U15" id="oNd-Ig-kSb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -13,8 +14,25 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="ljq-X6-U15">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <animations/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="HOg-Cf-iUY"/>
+                        <outlet property="delegate" destination="-1" id="Hnr-5N-0RM"/>
+                    </connections>
+                </tableView>
+            </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ljq-X6-U15" secondAttribute="trailing" id="R5o-Em-GvL"/>
+                <constraint firstItem="ljq-X6-U15" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="glH-qQ-FJn"/>
+                <constraint firstItem="ljq-X6-U15" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="he8-tT-Adt"/>
+                <constraint firstAttribute="bottom" secondItem="ljq-X6-U15" secondAttribute="bottom" id="qJs-XO-ze6"/>
+            </constraints>
         </view>
     </objects>
 </document>

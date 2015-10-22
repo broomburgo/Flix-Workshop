@@ -25,6 +25,8 @@ class MovieCell: UITableViewCell
   
   func setMovie(movie: Movie) -> MovieCell
   {
+    stylize()
+    
     titleLabel.text = movie.title
     yearLabel.text = "\(movie.year)"
     scoreLabel.text = "\(movie.score)"
@@ -46,5 +48,10 @@ class MovieCell: UITableViewCell
       .trim(", ")
     
     return self
+  }
+  
+  func stylize()
+  {
+    titleLabel.textColor = flixColor
   }
 }

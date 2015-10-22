@@ -22,6 +22,7 @@
 		38B3D89E1BD8D1750069953E /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38B3D89C1BD8D1750069953E /* MovieCell.xib */; settings = {ASSET_TAGS = (); }; };
 		38B3D8A21BD8EF980069953E /* FilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B3D8A01BD8EF980069953E /* FilterController.swift */; settings = {ASSET_TAGS = (); }; };
 		38B3D8A31BD8EF980069953E /* FilterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38B3D8A11BD8EF980069953E /* FilterController.xib */; settings = {ASSET_TAGS = (); }; };
+		38B3D8A51BD908450069953E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B3D8A41BD908450069953E /* Constants.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		38B3D89C1BD8D1750069953E /* MovieCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
 		38B3D8A01BD8EF980069953E /* FilterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterController.swift; sourceTree = "<group>"; };
 		38B3D8A11BD8EF980069953E /* FilterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterController.xib; sourceTree = "<group>"; };
+		38B3D8A41BD908450069953E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				383D28E61BD79BCB003A810B /* Extensions.swift */,
 				383D28FA1BD7CF66003A810B /* Functions.swift */,
 				383D28FC1BD7D8F5003A810B /* Future.swift */,
+				38B3D8A41BD908450069953E /* Constants.swift */,
 			);
 			name = Elements;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				383D28D01BD79796003A810B /* AppDelegate.swift in Sources */,
 				383D28FB1BD7CF66003A810B /* Functions.swift in Sources */,
 				383D28E71BD79BCB003A810B /* Extensions.swift in Sources */,
+				38B3D8A51BD908450069953E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
