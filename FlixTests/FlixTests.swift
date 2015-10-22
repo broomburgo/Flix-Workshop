@@ -84,6 +84,34 @@ class FlixTests: XCTestCase
     
     waitForExpectationsWithTimeout(1, handler: nil)
   }
+  
+  func testTrimString()
+  {
+    let string1 = "abstring1ab"
+    let string1Trimmed = string1.trim("ab")
+    let expectedString1Trimmed = "string1"
+    XCTAssertEqual(string1Trimmed, expectedString1Trimmed)
+    
+    let string2 = "abstring2"
+    let string2Trimmed = string2.trim("ab")
+    let expectedString2Trimmed = "string2"
+    XCTAssertEqual(string2Trimmed, expectedString2Trimmed)
+    
+    let string3 = "string3ab"
+    let string3Trimmed = string3.trim("ab")
+    let expectedString3Trimmed = "string3"
+    XCTAssertEqual(string3Trimmed, expectedString3Trimmed)
+    
+    let string4 = "string4"
+    let string4Trimmed = string4.trim("ab")
+    let expectedString4Trimmed = "string4"
+    XCTAssertEqual(string4Trimmed, expectedString4Trimmed)
+    
+    let string5 = "string5"
+    let string5Trimmed = string5.trim("")
+    let expectedString5Trimmed = "string5"
+    XCTAssertEqual(string5Trimmed, expectedString5Trimmed)
+  }
 }
 
 func assertMovies(movies: [Movie])

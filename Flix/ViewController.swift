@@ -4,7 +4,6 @@ import UIKit
 class ViewController: UIViewController
 {
   @IBOutlet weak var tableView: UITableView!
-  let cellIdentifier = "cellIdentifier"
   
   private let movies: [Movie]
   private var modifier: MovieListModifier
@@ -59,10 +58,17 @@ extension ViewController: UITableViewDataSource
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
   {
-    let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier).getOrElse(UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier))
-    let movie = moviesToShow[indexPath.row]
-    cell.textLabel?.text = movie.title
-    return cell
+    let cell = tableView
+      .dequeueReusableCellWithIdentifier(MovieCell.defaultIdentifier)
+      .getOrElse(MovieCell.cell(indentifier: MovieCell.defaultIdentifier))
+      as! MovieCell
+    
+    return cell.setMovie(moviesToShow[indexPath.row])
+  }
+  
+  func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+  {
+    return CGFloat(MovieCell.defaultHeight)
   }
 }
 

@@ -28,3 +28,12 @@ func isOrderedBefore(comparison: Comparison) -> Bool
   }
 }
 
+func stringReducerWithConnector(connector: String) -> (String,String) -> String
+{
+  return { (var accumulator: String, element: String) -> String in
+    accumulator.appendContentsOf(", ")
+    accumulator.appendContentsOf(element)
+    return accumulator
+  }
+}
+

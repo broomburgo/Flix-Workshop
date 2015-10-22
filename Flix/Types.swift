@@ -1,16 +1,16 @@
 
 import Foundation
 
-struct Movie {
-  let title: String
-  let directors: [String]
-  let writers: [String]
-  let year: Int
-  let genres: [String]
-  let plot: String
-  let score: Float
+public struct Movie {
+  public let title: String
+  public let directors: [String]
+  public let writers: [String]
+  public let year: Int
+  public let genres: [String]
+  public let plot: String
+  public let score: Float
   
-  init(dict: [String:AnyObject])
+  public init(dict: [String:AnyObject])
   {
     let unknown = "UNKNOWN"
     
