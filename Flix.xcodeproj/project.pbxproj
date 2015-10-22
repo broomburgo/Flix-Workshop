@@ -42,7 +42,7 @@
 		383D28EC1BD79FB5003A810B /* FlixTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlixTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		383D28EE1BD79FB5003A810B /* FlixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlixTests.swift; sourceTree = "<group>"; };
 		383D28F01BD79FB5003A810B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		383D28F81BD7C84E003A810B /* top3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = top3.json; sourceTree = "<group>"; };
+		383D28F81BD7C84E003A810B /* top3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = top3.json; path = ../Flix/top3.json; sourceTree = "<group>"; };
 		383D28FA1BD7CF66003A810B /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		383D28FC1BD7D8F5003A810B /* Future.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		383D28FE1BD7E5A9003A810B /* top250.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = top250.json; sourceTree = "<group>"; };
@@ -92,7 +92,6 @@
 				383D28D11BD79796003A810B /* ViewController.swift */,
 				383D28E11BD797DD003A810B /* ViewController.xib */,
 				383D28D81BD79796003A810B /* LaunchScreen.storyboard */,
-				383D28F81BD7C84E003A810B /* top3.json */,
 				383D28FE1BD7E5A9003A810B /* top250.json */,
 				383D28DB1BD79796003A810B /* Info.plist */,
 			);
@@ -113,6 +112,7 @@
 		383D28ED1BD79FB5003A810B /* FlixTests */ = {
 			isa = PBXGroup;
 			children = (
+				383D28F81BD7C84E003A810B /* top3.json */,
 				383D28EE1BD79FB5003A810B /* FlixTests.swift */,
 				383D28F01BD79FB5003A810B /* Info.plist */,
 			);
