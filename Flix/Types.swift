@@ -61,6 +61,36 @@ public struct Movie {
   }
 }
 
+typealias MovieListChangeIdentifier = String
+
+struct MovieListChangeReference
+{
+  let identifier: MovieListChangeIdentifier
+  let title: String
+  let change: MovieListChange
+  
+  init(identifier: MovieListChangeIdentifier, title: String, change: MovieListChange)
+  {
+    self.identifier = identifier
+    self.title = title
+    self.change = change
+  }
+}
+
+struct MovieListChangeGroup
+{
+  let identifier: MovieListChangeIdentifier
+  let title: String
+  let references: [MovieListChangeReference]
+  
+  init(identifier: MovieListChangeIdentifier, title: String, references: [MovieListChangeReference])
+  {
+    self.identifier = identifier
+    self.title = title
+    self.references = references
+  }
+}
+
 enum Comparison: Int
 {
   case Ascending = 1
@@ -68,21 +98,51 @@ enum Comparison: Int
   case Descending = -1
 }
 
-typealias MovieFilter = Movie -> Bool
-typealias MovieComparator = (Movie,Movie) -> Comparison
-
-struct MovieListModifier
+enum MovieOrdering: Equatable
 {
-  let filter: MovieFilter
-  let comparator: MovieComparator
+  case None
+  case Title(ascending: Bool)
+  case Score(ascending: Bool)
+  case Year(ascending: Bool)
   
-  static func empty() -> MovieListModifier
-  {
-    return MovieListModifier(
-      filter: { _ in true },
-      comparator: { _ in .Same }
-    )
+  var title: String {
+    switch self {
+    case .None:
+      return "none"
+    case .Title(let ascending):
+      return ascending ? "title ascending" : "title descending"
+    case .Score(let ascending):
+      return ascending ? "score ascending" : "score descending"
+    case .Year(let ascending):
+      return ascending ? "year ascending" : "year descending"
+    }
+  }
+  
+  var comparator: MovieComparator {
+    return { _ in .Same }
   }
 }
+
+func == (lhs: MovieOrdering, rhs: MovieOrdering) -> Bool
+{
+  switch (lhs, rhs) {
+  case (.None, .None):
+    return true
+  case let (.Title(lhsAscending), .Title(rhsAscending)):
+    return lhsAscending == rhsAscending
+  case let (.Score(lhsAscending), .Score(rhsAscending)):
+    return lhsAscending == rhsAscending
+  case let (.Year(lhsAscending), .Year(rhsAscending)):
+    return lhsAscending == rhsAscending
+  default:
+    return false
+  }
+}
+
+
+
+
+
+
 
 

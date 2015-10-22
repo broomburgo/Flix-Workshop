@@ -23,6 +23,9 @@
 		38B3D8A21BD8EF980069953E /* FilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B3D8A01BD8EF980069953E /* FilterController.swift */; settings = {ASSET_TAGS = (); }; };
 		38B3D8A31BD8EF980069953E /* FilterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38B3D8A11BD8EF980069953E /* FilterController.xib */; settings = {ASSET_TAGS = (); }; };
 		38B3D8A51BD908450069953E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B3D8A41BD908450069953E /* Constants.swift */; settings = {ASSET_TAGS = (); }; };
+		38B3D8B41BD934210069953E /* MovieListChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B3D8B31BD934210069953E /* MovieListChange.swift */; settings = {ASSET_TAGS = (); }; };
+		38B3D8B71BD942880069953E /* OrderingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B3D8B51BD942880069953E /* OrderingController.swift */; settings = {ASSET_TAGS = (); }; };
+		38B3D8B81BD942880069953E /* OrderingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38B3D8B61BD942880069953E /* OrderingController.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,9 @@
 		38B3D8A01BD8EF980069953E /* FilterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterController.swift; sourceTree = "<group>"; };
 		38B3D8A11BD8EF980069953E /* FilterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterController.xib; sourceTree = "<group>"; };
 		38B3D8A41BD908450069953E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		38B3D8B31BD934210069953E /* MovieListChange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListChange.swift; sourceTree = "<group>"; };
+		38B3D8B51BD942880069953E /* OrderingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderingController.swift; sourceTree = "<group>"; };
+		38B3D8B61BD942880069953E /* OrderingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderingController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +117,7 @@
 		383D28E31BD79AC5003A810B /* Elements */ = {
 			isa = PBXGroup;
 			children = (
+				38B3D8B31BD934210069953E /* MovieListChange.swift */,
 				383D28E41BD79ADF003A810B /* Types.swift */,
 				383D28E61BD79BCB003A810B /* Extensions.swift */,
 				383D28FA1BD7CF66003A810B /* Functions.swift */,
@@ -146,6 +153,8 @@
 				383D28E11BD797DD003A810B /* ViewController.xib */,
 				38B3D8A01BD8EF980069953E /* FilterController.swift */,
 				38B3D8A11BD8EF980069953E /* FilterController.xib */,
+				38B3D8B51BD942880069953E /* OrderingController.swift */,
+				38B3D8B61BD942880069953E /* OrderingController.xib */,
 			);
 			name = Pages;
 			sourceTree = "<group>";
@@ -233,6 +242,7 @@
 				383D28E21BD797DD003A810B /* ViewController.xib in Resources */,
 				38B3D8A31BD8EF980069953E /* FilterController.xib in Resources */,
 				383D28FF1BD7E5A9003A810B /* top250.json in Resources */,
+				38B3D8B81BD942880069953E /* OrderingController.xib in Resources */,
 				383D28DA1BD79796003A810B /* LaunchScreen.storyboard in Resources */,
 				383D28F91BD7C84E003A810B /* top3.json in Resources */,
 				38B3D89E1BD8D1750069953E /* MovieCell.xib in Resources */,
@@ -255,8 +265,10 @@
 			files = (
 				38B3D89D1BD8D1750069953E /* MovieCell.swift in Sources */,
 				383D28FD1BD7D8F5003A810B /* Future.swift in Sources */,
+				38B3D8B71BD942880069953E /* OrderingController.swift in Sources */,
 				383D28E51BD79ADF003A810B /* Types.swift in Sources */,
 				38B3D8A21BD8EF980069953E /* FilterController.swift in Sources */,
+				38B3D8B41BD934210069953E /* MovieListChange.swift in Sources */,
 				383D28D21BD79796003A810B /* ViewController.swift in Sources */,
 				383D28D01BD79796003A810B /* AppDelegate.swift in Sources */,
 				383D28FB1BD7CF66003A810B /* Functions.swift in Sources */,

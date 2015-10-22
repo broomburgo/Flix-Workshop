@@ -6,9 +6,9 @@ class ViewController: UIViewController
   @IBOutlet weak var tableView: UITableView!
   
   private let movies: [Movie]
-  private var modifier: MovieListModifier
+  private var change: MovieListChange = { $0 }
   private var moviesToShow: [Movie] {
-    return movies.filter(modifier.filter).sort(isOrderedBefore•modifier.comparator)
+    return change(movies)
   }
   
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?)
@@ -16,7 +16,6 @@ class ViewController: UIViewController
     do
     {
       movies = try getMoviesFromFileNamed("top250.json")
-      modifier = MovieListModifier.empty()
     }
     catch let error as NSError
     {
@@ -50,19 +49,21 @@ class ViewController: UIViewController
   
   func didTapEdit()
   {
-    let filterController = FilterController()
+    let filterController = FilterController(
+      movieListChangeGroups: movieListChangeGroupsWithMovieList(movies)
+    )
     
     navigationController?.pushViewController(filterController, animated: true)
     
-    filterController.future.onComplete { [unowned self] newModifier in
-      self.reloadWithModifier(newModifier)
+    filterController.future.onComplete { [unowned self] newChange in
+      self.reloadWithChange(newChange)
       self.navigationController?.popViewControllerAnimated(true)
     }
   }
     
-  func reloadWithModifier(newModifier: MovieListModifier)
+  func reloadWithChange(newChange: MovieListChange)
   {
-    modifier = newModifier
+    change = newChange
     tableView.reloadData()
   }
 }
