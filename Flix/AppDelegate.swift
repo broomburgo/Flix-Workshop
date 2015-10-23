@@ -36,8 +36,13 @@ func setupAppearance()
   UINavigationBar.appearance().barStyle = .Black
   UINavigationBar.appearance().translucent = false
   UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-  UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
   UINavigationBar.appearance().barTintColor = flixColor
+  UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
   
+  UIToolbar.appearance().barStyle = .Black
+  UIToolbar.appearance().translucent = false
+  UIToolbar.appearance().tintColor = UIColor.whiteColor()
+  UIToolbar.appearance().barTintColor = flixColor
+
   UILabel.appearanceWhenContainedInInstancesOfClasses([MovieCell.self]).textColor = cellTextColor
 }

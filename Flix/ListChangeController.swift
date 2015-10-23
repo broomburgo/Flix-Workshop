@@ -9,7 +9,6 @@ class ListChangeController: UIViewController
   
   let future = Future<MovieListChange>()
   
-//  private var selectedIdentifiers = [MovieListChangeIdentifier:MovieListChangeIdentifier]()
   private var selectedReferences = [MovieListChangeIdentifier:MovieListChangeReference]()
   
   private let groups: [[MovieListChangeGroup]]
@@ -41,9 +40,19 @@ class ListChangeController: UIViewController
     )
   }
   
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    navigationController?.setToolbarHidden(true, animated: animated)
+  }
+  
   func didTapDone()
   {
-    let change = movieListChangeWithReferences(Array(selectedReferences.values))
+    let references = Array(selectedReferences.values)
+    let change = movieListChange(
+      filter: movieFilterWithReferences(references),
+      comparator: movieComparatorWithReferences(references)
+    )
     future.completeWith(change)
   }
 }

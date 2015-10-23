@@ -10,8 +10,8 @@ struct MovieListChangeReference
 {
   let identifier: MovieListChangeIdentifier
   let title: String
-  let filter: MovieFilter
-  let comparator: MovieComparator
+  let filter: MovieFilter?
+  let comparator: MovieComparator?
     
   var change: MovieListChange {
     return movieListChange(filter: filter, comparator: comparator)
@@ -21,24 +21,8 @@ struct MovieListChangeReference
   {
     self.identifier = identifier
     self.title = title
-    
-    if let filter = filter
-    {
-      self.filter = filter
-    }
-    else
-    {
-      self.filter = emptyMovieFilter()
-    }
-    
-    if let comparator = comparator
-    {
-      self.comparator = comparator
-    }
-    else
-    {
-      self.comparator = emptyMovieComparator()
-    }
+    self.filter = filter
+    self.comparator = comparator
   }
 }
 
@@ -64,7 +48,7 @@ extension MovieOrdering
     switch self {
     
     case .None:
-      return emptyMovieComparator()
+      return movieComparatorSame()
     
     case .Title(ascending: let ascending):
       return movieComparatorFor(ascending) { Comparison(withComparisonResult:$0.title.compare($1.title)) }

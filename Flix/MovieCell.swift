@@ -14,7 +14,7 @@ class MovieCell: UITableViewCell
   @IBOutlet weak var writersCaptionLabel: UILabel!
   @IBOutlet weak var writersLabel: UILabel!
   
-  static let defaultHeight = Float(100)
+  static let defaultHeight = Float(130)
   static let defaultIdentifier = "CellIdentifier"
   
   static func cell(indentifier identifier: String) -> MovieCell

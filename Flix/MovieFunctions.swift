@@ -1,7 +1,7 @@
 
 import Foundation
 
-func emptyMovieComparator() -> MovieComparator
+func movieComparatorSame() -> MovieComparator
 {
   return { _ in .Same }
 }
@@ -36,9 +36,14 @@ func && (lhs: MovieComparator, rhs: MovieComparator) -> MovieComparator
   }
 }
 
-func emptyMovieFilter() -> MovieFilter
+func movieFilterAll() -> MovieFilter
 {
   return { _ in true }
+}
+
+func movieFilterNone() -> MovieFilter
+{
+  return { _ in false }
 }
 
 func || (lhs: MovieFilter, rhs: MovieFilter) -> MovieFilter
@@ -53,35 +58,45 @@ func && (lhs: MovieFilter, rhs: MovieFilter) -> MovieFilter
 
 func emptyMovieListChange() -> MovieListChange
 {
-  return movieListChange(filter: emptyMovieFilter(), comparator: emptyMovieComparator())
+  return movieListChange(filter: nil, comparator: movieComparatorSame())
 }
 
-func movieListChange (filter filter: MovieFilter, comparator: MovieComparator) -> MovieListChange
+func movieListChange (filter filter: MovieFilter?, comparator: MovieComparator?) -> MovieListChange
 {
-  return { $0.filter(filter).sort(isOrderedBefore•comparator) }
+  let filterChange: MovieListChange = { movies in filter.map { movies.filter($0) }.getOrElse(movies) }
+  let comparatorChange: MovieListChange = { movies in comparator.map { movies.sort(isOrderedBefore•$0) }.getOrElse(movies) }
+  return comparatorChange•filterChange
 }
 
 func movieListChange (filter: MovieFilter) -> MovieListChange
 {
-  return movieListChange(filter: filter, comparator: emptyMovieComparator())
+  return movieListChange(filter: filter, comparator: nil)
 }
 
 func movieListChange (comparator: MovieComparator) -> MovieListChange
 {
-  return movieListChange (filter: emptyMovieFilter(), comparator: comparator)
+  return movieListChange (filter: nil, comparator: comparator)
 }
 
-func + (lhs: MovieListChange, rhs: MovieListChange) -> MovieListChange
+func movieFilterWithReferences (references: [MovieListChangeReference]) -> MovieFilter?
 {
-  return { movies in
-    lhs(rhs(movies))
-  }
+  let filters = references
+    .flatMap { $0.filter }
+  
+  guard filters.count > 0 else { return nil }
+  
+  return filters
+    .reduce(movieFilterNone(), combine: ||)
 }
 
-func movieListChangeWithReferences (references: [MovieListChangeReference]) -> MovieListChange
+func movieComparatorWithReferences (references: [MovieListChangeReference]) -> MovieComparator?
 {
-  return references
-    .map { $0.change }
-    .reduce(emptyMovieListChange(), combine: +)
+  let comparators = references
+    .flatMap { $0.comparator }
+  
+  guard comparators.count > 0 else { return nil }
+  
+  return comparators
+    .reduce(movieComparatorSame(), combine: &&)
 }
 

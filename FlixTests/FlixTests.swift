@@ -125,7 +125,7 @@ func assertMovies(movies: [Movie])
     year: 1994,
     genres: ["Crime","Drama"],
     plot: "Andy Dufresne is a young and successful banker whose life changes drastically when he is convicted and sentenced to life imprisonment for the murder of his wife and her lover. Set in the 1940s, the film shows how Andy, with the help of his friend Red, the prison entrepreneur, turns out to be a most unconventional prisoner.",
-    score: 8
+    score: 9.3
   )
   
   assertMovie(movies[1],
@@ -135,7 +135,7 @@ func assertMovies(movies: [Movie])
     year: 1972,
     genres: ["Crime","Drama"],
     plot: "When the aging head of a famous crime family decides to transfer his position to one of his subalterns, a series of unfortunate events start happening to the family, and a war begins between all the well-known families leading to insolence, deportation, murder and revenge, and ends with the favorable successor being finally chosen.",
-    score: 10
+    score: 9.2
   )
   
   assertMovie(movies[2],
@@ -145,7 +145,7 @@ func assertMovies(movies: [Movie])
     year: 2008,
     genres: ["Action","Crime","Drama"],
     plot: "Batman raises the stakes in his war on crime. With the help of Lieutenant Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the city streets. The partnership proves to be effective, but they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as The Joker.",
-    score: 8.2
+    score: 9.0
   )
 }
 

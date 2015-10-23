@@ -10,8 +10,29 @@ class MovieChangeController: UIViewController
   private let cellIdentifier = "cellIdentifier"
 
   private var selectedIdentifiers = [MovieListChangeIdentifier]() {
-    willSet(newSelectedIdentifiers) {
+    
+    willSet(newSelectedIdentifiers)
+    {
       navigationController?.setToolbarHidden(newSelectedIdentifiers.count < 2, animated: true)
+    }
+    didSet
+    {
+      let removedIdentifiers = oldValue
+        .filter { selectedIdentifiers.contains($0) == false}
+      
+      let addedIdentifiers = selectedIdentifiers
+        .filter { oldValue.contains($0) == false }
+      
+      var modifiedIdentifiers = [MovieListChangeIdentifier]()
+      modifiedIdentifiers.appendContentsOf(removedIdentifiers)
+      modifiedIdentifiers.appendContentsOf(addedIdentifiers)
+      
+      let indexPaths = modifiedIdentifiers
+        .flatMap { identifier in group.references.indexOf { $0.identifier == identifier }  }
+        .flatMap { Int($0) }
+        .map { NSIndexPath(forRow: $0, inSection: 0) }
+      
+      tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
     }
   }
   
@@ -72,13 +93,9 @@ class MovieChangeController: UIViewController
       .reduce("", combine: stringReducerWithConnector(", "))
       .trim(", ")
     
-    let combinedFilter = validReferences
-      .map { $0.filter }
-      .reduce(emptyMovieFilter(), combine: ||)
+    let combinedFilter = movieFilterWithReferences(validReferences)
     
-    let combinedComparator = validReferences
-      .map { $0.comparator }
-      .reduce(emptyMovieComparator(), combine: &&)
+    let combinedComparator = movieComparatorWithReferences(validReferences)
     
     future.completeWith(MovieListChangeReference(
       identifier: combinedIdentifier,

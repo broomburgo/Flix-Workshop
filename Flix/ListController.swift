@@ -6,7 +6,12 @@ class ListController: UIViewController
   @IBOutlet weak var tableView: UITableView!
   
   private let movies: [Movie]
-  private var change: MovieListChange = { $0 }
+  private var change: MovieListChange = { $0 } {
+    didSet {
+      tableView.reloadData()
+      tableView.setContentOffset(CGPointZero, animated: true)
+    }
+  }
   private var moviesToShow: [Movie] {
     return change(movies)
   }
@@ -52,7 +57,7 @@ class ListController: UIViewController
     )
     tableView.reloadData()
   }
-  
+    
   func didTapEdit()
   {
     let filterController = ListChangeController(
@@ -62,20 +67,14 @@ class ListController: UIViewController
     navigationController?.pushViewController(filterController, animated: true)
     
     filterController.future.onComplete { [unowned self] newChange in
-      self.reloadWithChange(newChange)
+      self.change = newChange
       self.navigationController?.popViewControllerAnimated(true)
     }
   }
   
   func didTapClear()
   {
-    reloadWithChange(emptyMovieListChange())
-  }
-    
-  func reloadWithChange(newChange: MovieListChange)
-  {
-    change = newChange
-    tableView.reloadData()
+    change = emptyMovieListChange()
   }
 }
 
