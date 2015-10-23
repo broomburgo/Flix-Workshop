@@ -12,6 +12,16 @@ extension Optional
       return value
     }
   }
+  
+  func applyIfPossible(@noescape apply: Wrapped -> ())
+  {
+    switch self {
+    case .None:
+      return
+    case .Some(let value):
+      return apply(value)
+    }
+  }
 }
 
 extension Dictionary
@@ -34,11 +44,8 @@ extension String
   func trim(stringToTrim: String) -> String
   {
     guard stringToTrim.characters.count > 0 else { return self }
-        
     let stepsToAdvanceStartIndex = self.hasPrefix(stringToTrim) ? stringToTrim.characters.count : 0
-    
     let stepsToAdvanceEndIndex = self.hasSuffix(stringToTrim) ? stringToTrim.characters.count : 0
-    
     return self.substringWithRange(Range(start: self.startIndex.advancedBy(stepsToAdvanceStartIndex), end: self.endIndex.advancedBy(-stepsToAdvanceEndIndex)))
   }
 }

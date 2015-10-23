@@ -42,8 +42,9 @@ class ListChangeController: UIViewController
   
   func didTapDone()
   {
-    let modifier: MovieListChange = { $0 }
-    future.completeWith(modifier)
+    let references = groups.reduce([MovieListChangeReference](), combine: movieListChangeGroupsReducerWithSelectedIdentifiers(selectedIdentifiers))
+    let change = movieListChangeWithReferences(references)
+    future.completeWith(change)
   }
 }
 

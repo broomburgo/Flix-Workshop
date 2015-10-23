@@ -42,7 +42,7 @@ public struct Movie {
     plot = dict
       .valueForKey("plot", asType: String.self)
       .getOrElse(unknown)
-        
+    
     score = dict
       .valueForKey("rating", asType: String.self)
       .flatMap(Float.init)
@@ -58,36 +58,6 @@ public struct Movie {
       .map { $0.trim(" min") }
       .flatMap { Int($0) }
       .getOrElse(0)
-  }
-}
-
-typealias MovieListChangeIdentifier = String
-
-struct MovieListChangeReference
-{
-  let identifier: MovieListChangeIdentifier
-  let title: String
-  let change: MovieListChange
-  
-  init(identifier: MovieListChangeIdentifier, title: String, change: MovieListChange)
-  {
-    self.identifier = identifier
-    self.title = title
-    self.change = change
-  }
-}
-
-struct MovieListChangeGroup
-{
-  let identifier: MovieListChangeIdentifier
-  let title: String
-  let references: [MovieListChangeReference]
-  
-  init(identifier: MovieListChangeIdentifier, title: String, references: [MovieListChangeReference])
-  {
-    self.identifier = identifier
-    self.title = title
-    self.references = references
   }
 }
 

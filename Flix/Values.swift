@@ -1,39 +1,8 @@
 
-import Foundation
+import UIKit
 
-typealias MovieFilter = Movie -> Bool
-typealias MovieComparator = (Movie,Movie) -> Comparison
-typealias MovieListChange = [Movie] -> [Movie]
-
-func emptyMovieComparator() -> MovieComparator
-{
-  return { _ in .Same }
-}
-
-func emptyMovieFilter() -> MovieFilter
-{
-  return { _ in true }
-}
-
-func emptyMovieListChange() -> MovieListChange
-{
-  return movieListChange(filter: emptyMovieFilter(), comparator: emptyMovieComparator())
-}
-
-func movieListChange (filter filter: MovieFilter, comparator: MovieComparator) -> MovieListChange
-{
-  return { $0.filter(filter).sort(isOrderedBefore•comparator) }
-}
-
-func movieListChange (filter: MovieFilter) -> MovieListChange
-{
-  return movieListChange(filter: filter, comparator: emptyMovieComparator())
-}
-
-func movieListChange (comparator: MovieComparator) -> MovieListChange
-{
-  return movieListChange (filter: emptyMovieFilter(), comparator: comparator)
-}
+let flixColor = UIColor(red: 0.3, green: 0.1, blue: 0.6, alpha: 1)
+let cellTextColor = UIColor(white: 0.1, alpha: 1)
 
 func movieListChangeGroupsWithMovies(movieList: [Movie]) -> [[MovieListChangeGroup]]
 {
@@ -83,4 +52,3 @@ func movieListChangeGroupsWithMovies(movieList: [Movie]) -> [[MovieListChangeGro
     ]
   ]
 }
-
