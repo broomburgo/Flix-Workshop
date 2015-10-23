@@ -35,43 +35,52 @@ func movieListChange (comparator: MovieComparator) -> MovieListChange
   return movieListChange (filter: emptyMovieFilter(), comparator: comparator)
 }
 
-func movieListChangeGroupsWithMovieList(movieList: [Movie]) -> [[MovieListChangeGroup]]
+func movieListChangeGroupsWithMovies(movieList: [Movie]) -> [[MovieListChangeGroup]]
 {
-  return [[MovieListChangeGroup(
-    identifier: "orderBy",
-    title: "Order by",
-    references: []
-    )],
-    [MovieListChangeGroup(
-      identifier: "maxDuration",
-      title: "Max duration",
-      references: []
+  return [
+    [
+      MovieListChangeGroup(
+        identifier: "orderBy",
+        title: "Order by",
+        references: []
+      )
+    ],
+    [
+      MovieListChangeGroup(
+        identifier: "maxDuration",
+        title: "Max duration",
+        references: []
       ),
       MovieListChangeGroup(
         identifier: "minYear",
         title: "Min year",
         references: []
-      )],
-    [MovieListChangeGroup(
-      identifier: "genres",
-      title: "Genres",
-      references: []
+      )
+    ],
+    [
+      MovieListChangeGroup(
+        identifier: "genres",
+        title: "Genres",
+        references: []
       ),
       MovieListChangeGroup(
         identifier: "rated",
         title: "Rated",
         references: []
-      )],
-    [MovieListChangeGroup(
-      identifier: "directors",
-      title: "Directors",
-      references: []
+      )
+    ],
+    [
+      MovieListChangeGroup(
+        identifier: "directors",
+        title: "Directors",
+        references: []
       ),
       MovieListChangeGroup(
         identifier: "writers",
         title: "Writers",
         references: []
-      )]
+      )
+    ]
   ]
 }
 

@@ -1,7 +1,7 @@
 
 import UIKit
 
-class ViewController: UIViewController
+class ListController: UIViewController
 {
   @IBOutlet weak var tableView: UITableView!
   
@@ -49,8 +49,8 @@ class ViewController: UIViewController
   
   func didTapEdit()
   {
-    let filterController = FilterController(
-      movieListChangeGroups: movieListChangeGroupsWithMovieList(movies)
+    let filterController = ListChangeController(
+      movieListChangeGroups: movieListChangeGroupsWithMovies(movies)
     )
     
     navigationController?.pushViewController(filterController, animated: true)
@@ -68,7 +68,7 @@ class ViewController: UIViewController
   }
 }
 
-extension ViewController: UITableViewDataSource
+extension ListController: UITableViewDataSource
 {
   func numberOfSectionsInTableView(tableView: UITableView) -> Int
   {
@@ -96,7 +96,7 @@ extension ViewController: UITableViewDataSource
   }
 }
 
-extension ViewController: UITableViewDelegate
+extension ListController: UITableViewDelegate
 {
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
   {

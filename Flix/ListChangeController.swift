@@ -1,7 +1,7 @@
 
 import UIKit
 
-class FilterController: UIViewController
+class ListChangeController: UIViewController
 {
   @IBOutlet weak var tableView: UITableView!
   
@@ -32,6 +32,12 @@ class FilterController: UIViewController
       target: self,
       action: Selector("didTapDone")
     )
+    navigationItem.backBarButtonItem = UIBarButtonItem(
+      title: "Cancel",
+      style: .Plain,
+      target: nil,
+      action: nil
+    )
   }
   
   func didTapDone()
@@ -41,7 +47,7 @@ class FilterController: UIViewController
   }
 }
 
-extension FilterController: UITableViewDataSource
+extension ListChangeController: UITableViewDataSource
 {
   func numberOfSectionsInTableView(tableView: UITableView) -> Int
   {
@@ -56,24 +62,37 @@ extension FilterController: UITableViewDataSource
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
   {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier).getOrElse(UITableViewCell(style: .Value1, reuseIdentifier: cellIdentifier))
-    let reference = groups[indexPath.section][indexPath.row]
+    let group = groups[indexPath.section][indexPath.row]
     
     cell.accessoryType = .DisclosureIndicator
-    cell.textLabel?.text = reference.title
+    cell.textLabel?.text = group.title
     
-    cell.detailTextLabel?.text = selectedIdentifiers[reference.identifier]
-      .flatMap { identifier in reference.references.find { $0.identifier == identifier } }
+    cell.detailTextLabel?.text = selectedIdentifiers[group.identifier]
+      .flatMap { identifier in group.references.find { $0.identifier == identifier } }
       .map { $0.title }
     
     return cell
   }
 }
 
-extension FilterController: UITableViewDelegate
+extension ListChangeController: UITableViewDelegate
 {
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
   {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    
+    let group = groups[indexPath.section][indexPath.row]
+    let reference = selectedIdentifiers[group.identifier]
+      .flatMap { identifier in group.references.find { $0.identifier == identifier } }
+    let controller = MovieChangeController(currentReference: reference, group: group)
+    
+    navigationController?.pushViewController(controller, animated: true)
+    
+    controller.future.onComplete { [unowned self] selectedReference in
+      self.selectedIdentifiers[group.identifier] = selectedReference.identifier
+      self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+      self.navigationController?.popViewControllerAnimated(true)
+    }
   }
 }
 

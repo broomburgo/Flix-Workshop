@@ -1,22 +1,23 @@
 
 import UIKit
 
-class OrderingController: UIViewController
+class MovieChangeController: UIViewController
 {
   @IBOutlet weak var tableView: UITableView!
   
-  let future = Future<MovieOrdering>()
+  let future = Future<MovieListChangeReference>()
 
   private let cellIdentifier = "cellIdentifier"
   
-  private let currentOrdering: MovieOrdering
-  private let possibleOrderings: [MovieOrdering]
+  private let currentReference: MovieListChangeReference?
+  private let possibleReferences: [MovieListChangeReference]
   
-  required init(currentOrdering: MovieOrdering, possibleOrderings: [MovieOrdering])
+  required init(currentReference: MovieListChangeReference?, group: MovieListChangeGroup)
   {
-    self.currentOrdering = currentOrdering
-    self.possibleOrderings = possibleOrderings
+    self.currentReference = currentReference
+    self.possibleReferences = group.references
     super.init(nibName: nil, bundle: nil)
+    self.title = group.title
   }
 
   required init?(coder aDecoder: NSCoder)
@@ -27,16 +28,15 @@ class OrderingController: UIViewController
   override func viewDidLoad()
   {
     super.viewDidLoad()
-    title = "Order by"
     tableView.reloadData()
   }
 }
 
-extension OrderingController: UITableViewDataSource
+extension MovieChangeController: UITableViewDataSource
 {
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
   {
-    return possibleOrderings.count
+    return possibleReferences.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -45,24 +45,24 @@ extension OrderingController: UITableViewDataSource
       .dequeueReusableCellWithIdentifier(cellIdentifier)
       .getOrElse(UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier))
     
-    let ordering = possibleOrderings[indexPath.row]
+    let reference = possibleReferences[indexPath.row]
     
-    cell.textLabel?.text = ordering.title
-    cell.accessoryType = ordering == currentOrdering ? .Checkmark : .None
+    cell.textLabel?.text = reference.title
+    cell.accessoryType = reference.identifier == currentReference?.identifier ? .Checkmark : .None
     
     return cell
   }
 }
 
-extension OrderingController: UITableViewDelegate
+extension MovieChangeController: UITableViewDelegate
 {
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
   {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
     
-    let ordering = possibleOrderings[indexPath.row]
+    let reference = possibleReferences[indexPath.row]
 
-    future.completeWith(ordering)
+    future.completeWith(reference)
   }
 }
 

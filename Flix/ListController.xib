@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController" customModule="Flix" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListController" customModule="Flix" customModuleProvider="target">
             <connections>
                 <outlet property="tableView" destination="0XQ-Jv-q0g" id="jLX-kM-IhC"/>
                 <outlet property="view" destination="iN0-l3-epB" id="xVM-Om-FZT"/>
@@ -33,7 +33,7 @@
                 <constraint firstAttribute="trailing" secondItem="0XQ-Jv-q0g" secondAttribute="trailing" id="OWY-Lu-h0d"/>
                 <constraint firstItem="0XQ-Jv-q0g" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jm5-oC-8t8"/>
             </constraints>
-            <point key="canvasLocation" x="515" y="389"/>
+            <point key="canvasLocation" x="708" y="451"/>
         </view>
     </objects>
 </document>

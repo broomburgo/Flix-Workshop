@@ -10,7 +10,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
   {
     setupAppearance()
-    configureWithRootViewControllerType(ViewController.self, embedInNavController: true)
+    configureWithRootViewControllerType(ListController.self, embedInNavController: true)
     return true
   }
 
