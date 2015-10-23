@@ -4,7 +4,7 @@ import UIKit
 let flixColor = UIColor(red: 0.3, green: 0.1, blue: 0.6, alpha: 1)
 let cellTextColor = UIColor(white: 0.1, alpha: 1)
 
-func movieListChangeGroupsWithMovies(movieList: [Movie]) -> [[MovieListChangeGroup]]
+func movieListChangeGroupsWithMovies(movies: [Movie]) -> [[MovieListChangeGroup]]
 {
   return [
     [

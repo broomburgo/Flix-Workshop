@@ -73,6 +73,11 @@ class MovieChangeController: UIViewController
           style: .Plain,
           target: self,
           action: Selector("didTapClearButton")
+        ),
+        UIBarButtonItem(
+          barButtonSystemItem: .FlexibleSpace,
+          target: nil,
+          action: nil
         )
       ]
     }

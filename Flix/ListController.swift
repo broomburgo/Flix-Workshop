@@ -8,8 +8,9 @@ class ListController: UIViewController
   private let movies: [Movie]
   private var change: MovieListChange = { $0 } {
     didSet {
-      tableView.reloadData()
       tableView.setContentOffset(CGPointZero, animated: true)
+      tableView.reloadData()
+      updateToolbar()
     }
   }
   private var moviesToShow: [Movie] {
@@ -56,6 +57,39 @@ class ListController: UIViewController
       action: Selector("didTapClear")
     )
     tableView.reloadData()
+    updateToolbar()
+  }
+  
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    navigationController?.setToolbarHidden(false, animated: animated)
+  }
+  
+  func updateToolbar()
+  {
+    let count = moviesToShow.count
+    let movieCaption = count == 1 ? "movie" : "movies"
+    setToolbarItems(
+      [
+        UIBarButtonItem(
+          barButtonSystemItem: .FlexibleSpace,
+          target: nil,
+          action: nil
+        ),
+        UIBarButtonItem(
+          title: "\(count) \(movieCaption)",
+          style: .Plain,
+          target: nil,
+          action: nil
+        ),
+        UIBarButtonItem(
+          barButtonSystemItem: .FlexibleSpace,
+          target: nil,
+          action: nil
+        )
+      ],
+      animated: true)
   }
     
   func didTapEdit()
