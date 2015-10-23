@@ -8,16 +8,18 @@ class MovieChangeController: UIViewController
   let future = Future<MovieListChangeReference?>()
 
   private let cellIdentifier = "cellIdentifier"
+
+  private var selectedIdentifiers = [MovieListChangeIdentifier]() {
+    willSet(newSelectedIdentifiers) {
+      navigationController?.setToolbarHidden(newSelectedIdentifiers.count < 2, animated: true)
+    }
+  }
   
-  private let currentReference: MovieListChangeReference?
-  private let possibleReferences: [MovieListChangeReference]
-  
-  required init(currentReference: MovieListChangeReference?, group: MovieListChangeGroup)
+  private let group: MovieListChangeGroup
+  required init(group: MovieListChangeGroup)
   {
-    self.currentReference = currentReference
-    self.possibleReferences = group.references
+    self.group = group
     super.init(nibName: nil, bundle: nil)
-    self.title = group.title
   }
 
   required init?(coder aDecoder: NSCoder)
@@ -29,18 +31,79 @@ class MovieChangeController: UIViewController
   {
     super.viewDidLoad()
     
-    navigationItem.rightBarButtonItem = UIBarButtonItem(
-      barButtonSystemItem: .Trash,
-      target: self,
-      action: Selector("didTapTrashButton")
-    )
+    title = group.title
+    
+    if group.multipleSelection
+    {
+      navigationItem.rightBarButtonItem = UIBarButtonItem(
+        barButtonSystemItem: .Done,
+        target: self,
+        action: Selector("didTapDoneButton")
+      )
+      
+      toolbarItems = [
+        UIBarButtonItem(
+          barButtonSystemItem: .FlexibleSpace,
+          target: nil,
+          action: nil
+        ),
+        UIBarButtonItem(
+          title: "Clear",
+          style: .Plain,
+          target: self,
+          action: Selector("didTapClearButton")
+        )
+      ]
+    }
     
     tableView.reloadData()
   }
-  
-  func didTapTrashButton()
+    
+  func didTapDoneButton()
   {
-    future.completeWith(nil)
+    let validReferences = group.references
+      .filter { selectedIdentifiers.contains($0.identifier) }
+
+    let combinedIdentifier = selectedIdentifiers
+      .reduce("", combine: stringReducerWithConnector(""))
+    
+    let combinedTitle = validReferences
+      .map { $0.title }
+      .reduce("", combine: stringReducerWithConnector(", "))
+      .trim(", ")
+    
+    let combinedFilter = validReferences
+      .map { $0.filter }
+      .reduce(emptyMovieFilter(), combine: ||)
+    
+    let combinedComparator = validReferences
+      .map { $0.comparator }
+      .reduce(emptyMovieComparator(), combine: &&)
+    
+    future.completeWith(MovieListChangeReference(
+      identifier: combinedIdentifier,
+      title: combinedTitle,
+      filter: combinedFilter,
+      comparator: combinedComparator
+      )
+    )
+  }
+  
+  func didTapClearButton()
+  {
+    selectedIdentifiers = [MovieListChangeIdentifier]()
+  }
+  
+  func updateReference(reference: MovieListChangeReference)
+  {
+    if let index = selectedIdentifiers.indexOf(reference.identifier)
+    {
+      selectedIdentifiers.removeAtIndex(index)
+    }
+    else
+    {
+      selectedIdentifiers.append(reference.identifier)
+    }
   }
 }
 
@@ -48,7 +111,7 @@ extension MovieChangeController: UITableViewDataSource
 {
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
   {
-    return possibleReferences.count
+    return group.references.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -57,10 +120,10 @@ extension MovieChangeController: UITableViewDataSource
       .dequeueReusableCellWithIdentifier(cellIdentifier)
       .getOrElse(UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier))
     
-    let reference = possibleReferences[indexPath.row]
+    let reference = group.references[indexPath.row]
     
     cell.textLabel?.text = reference.title
-    cell.accessoryType = reference.identifier == currentReference?.identifier ? .Checkmark : .None
+    cell.accessoryType = selectedIdentifiers.contains(reference.identifier) ? .Checkmark : .None
     
     return cell
   }
@@ -72,9 +135,16 @@ extension MovieChangeController: UITableViewDelegate
   {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
     
-    let reference = possibleReferences[indexPath.row]
-
-    future.completeWith(reference)
+    let reference = group.references[indexPath.row]
+    
+    if group.multipleSelection
+    {
+      updateReference(reference)
+    }
+    else
+    {
+      future.completeWith(reference)
+    }
   }
 }
 

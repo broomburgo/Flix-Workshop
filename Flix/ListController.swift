@@ -44,6 +44,12 @@ class ListController: UIViewController
       target: self,
       action: Selector("didTapEdit")
     )
+    navigationItem.leftBarButtonItem = UIBarButtonItem(
+      title: "Clear",
+      style: .Plain,
+      target: self,
+      action: Selector("didTapClear")
+    )
     tableView.reloadData()
   }
   
@@ -59,6 +65,11 @@ class ListController: UIViewController
       self.reloadWithChange(newChange)
       self.navigationController?.popViewControllerAnimated(true)
     }
+  }
+  
+  func didTapClear()
+  {
+    reloadWithChange(emptyMovieListChange())
   }
     
   func reloadWithChange(newChange: MovieListChange)

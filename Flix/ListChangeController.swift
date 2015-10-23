@@ -9,7 +9,8 @@ class ListChangeController: UIViewController
   
   let future = Future<MovieListChange>()
   
-  private var selectedIdentifiers = [MovieListChangeIdentifier:MovieListChangeIdentifier]()
+//  private var selectedIdentifiers = [MovieListChangeIdentifier:MovieListChangeIdentifier]()
+  private var selectedReferences = [MovieListChangeIdentifier:MovieListChangeReference]()
   
   private let groups: [[MovieListChangeGroup]]
   required init(movieListChangeGroups: [[MovieListChangeGroup]])
@@ -42,8 +43,7 @@ class ListChangeController: UIViewController
   
   func didTapDone()
   {
-    let references = groups.reduce([MovieListChangeReference](), combine: movieListChangeGroupsReducerWithSelectedIdentifiers(selectedIdentifiers))
-    let change = movieListChangeWithReferences(references)
+    let change = movieListChangeWithReferences(Array(selectedReferences.values))
     future.completeWith(change)
   }
 }
@@ -67,10 +67,7 @@ extension ListChangeController: UITableViewDataSource
     
     cell.accessoryType = .DisclosureIndicator
     cell.textLabel?.text = group.title
-    
-    cell.detailTextLabel?.text = selectedIdentifiers[group.identifier]
-      .flatMap { identifier in group.references.find { $0.identifier == identifier } }
-      .map { $0.title }
+    cell.detailTextLabel?.text = selectedReferences[group.identifier].map { $0.title }
     
     return cell
   }
@@ -83,14 +80,12 @@ extension ListChangeController: UITableViewDelegate
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
     
     let group = groups[indexPath.section][indexPath.row]
-    let reference = selectedIdentifiers[group.identifier]
-      .flatMap { identifier in group.references.find { $0.identifier == identifier } }
-    let controller = MovieChangeController(currentReference: reference, group: group)
+    let controller = MovieChangeController(group: group)
     
     navigationController?.pushViewController(controller, animated: true)
     
     controller.future.onComplete { [unowned self] selectedReference in
-      self.selectedIdentifiers[group.identifier] = selectedReference?.identifier
+      self.selectedReferences[group.identifier] = selectedReference
       self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
       self.navigationController?.popViewControllerAnimated(true)
     }

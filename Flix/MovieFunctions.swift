@@ -1,10 +1,6 @@
 
 import Foundation
 
-typealias MovieFilter = Movie -> Bool
-typealias MovieComparator = (Movie,Movie) -> Comparison
-typealias MovieListChange = [Movie] -> [Movie]
-
 func emptyMovieComparator() -> MovieComparator
 {
   return { _ in .Same }
@@ -25,9 +21,34 @@ func movieComparatorFor (ascending: Bool, comparisonFunction: (Movie, Movie) -> 
   }
 }
 
+func && (lhs: MovieComparator, rhs: MovieComparator) -> MovieComparator
+{
+  return { m1, m2 in
+    let comparison = lhs(m1,m2)
+    switch comparison {
+    case .Ascending:
+      return comparison
+    case .Same:
+      return rhs(m1,m2)
+    case .Descending:
+      return comparison
+    }
+  }
+}
+
 func emptyMovieFilter() -> MovieFilter
 {
   return { _ in true }
+}
+
+func || (lhs: MovieFilter, rhs: MovieFilter) -> MovieFilter
+{
+  return { lhs($0) || rhs($0) }
+}
+
+func && (lhs: MovieFilter, rhs: MovieFilter) -> MovieFilter
+{
+  return { lhs($0) && rhs($0) }
 }
 
 func emptyMovieListChange() -> MovieListChange
@@ -54,22 +75,6 @@ func + (lhs: MovieListChange, rhs: MovieListChange) -> MovieListChange
 {
   return { movies in
     lhs(rhs(movies))
-  }
-}
-
-func movieListChangeGroupsReducerWithSelectedIdentifiers (selected: [MovieListChangeIdentifier:MovieListChangeIdentifier]) -> ([MovieListChangeReference],[MovieListChangeGroup]) -> [MovieListChangeReference]
-{
-  return { (var accumulatedReferences, currentGroups) in
-    
-    let newReferences = currentGroups.reduce([MovieListChangeReference]()) { (var currentReferences, currentGroup) in
-      selected[currentGroup.identifier]
-        .flatMap { referenceIdentifier in currentGroup.references.find { $0.identifier == referenceIdentifier } }
-        .applyIfPossible { currentReferences.append($0) }
-      return currentReferences
-    }
-    
-    accumulatedReferences.appendContentsOf(newReferences)
-    return accumulatedReferences
   }
 }
 

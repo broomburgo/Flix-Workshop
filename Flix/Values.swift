@@ -11,6 +11,7 @@ func movieListChangeGroupsWithMovies(movieList: [Movie]) -> [[MovieListChangeGro
       MovieListChangeGroup(
         identifier: "orderBy",
         title: "Order by",
+        multipleSelection: false,
         references: [
           MovieOrdering.Title(ascending: true).referenceWithIdentifier("orderBy1"),
           MovieOrdering.Title(ascending: false).referenceWithIdentifier("orderBy2"),
@@ -25,11 +26,13 @@ func movieListChangeGroupsWithMovies(movieList: [Movie]) -> [[MovieListChangeGro
       MovieListChangeGroup(
         identifier: "maxDuration",
         title: "Max duration",
+        multipleSelection: false,
         references: []
       ),
       MovieListChangeGroup(
         identifier: "minYear",
         title: "Min year",
+        multipleSelection: false,
         references: []
       )
     ],
@@ -37,11 +40,13 @@ func movieListChangeGroupsWithMovies(movieList: [Movie]) -> [[MovieListChangeGro
       MovieListChangeGroup(
         identifier: "genres",
         title: "Genres",
+        multipleSelection: true,
         references: []
       ),
       MovieListChangeGroup(
         identifier: "rated",
         title: "Rated",
+        multipleSelection: true,
         references: []
       )
     ],
@@ -49,11 +54,13 @@ func movieListChangeGroupsWithMovies(movieList: [Movie]) -> [[MovieListChangeGro
       MovieListChangeGroup(
         identifier: "directors",
         title: "Directors",
+        multipleSelection: true,
         references: []
       ),
       MovieListChangeGroup(
         identifier: "writers",
         title: "Writers",
+        multipleSelection: true,
         references: []
       )
     ]

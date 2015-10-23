@@ -1,19 +1,44 @@
 
 import Foundation
 
+typealias MovieFilter = Movie -> Bool
+typealias MovieComparator = (Movie,Movie) -> Comparison
+typealias MovieListChange = [Movie] -> [Movie]
 typealias MovieListChangeIdentifier = String
 
 struct MovieListChangeReference
 {
   let identifier: MovieListChangeIdentifier
   let title: String
-  let change: MovieListChange
+  let filter: MovieFilter
+  let comparator: MovieComparator
+    
+  var change: MovieListChange {
+    return movieListChange(filter: filter, comparator: comparator)
+  }
   
-  init(identifier: MovieListChangeIdentifier, title: String, change: MovieListChange)
+  init(identifier: MovieListChangeIdentifier, title: String, filter: MovieFilter?, comparator: MovieComparator?)
   {
     self.identifier = identifier
     self.title = title
-    self.change = change
+    
+    if let filter = filter
+    {
+      self.filter = filter
+    }
+    else
+    {
+      self.filter = emptyMovieFilter()
+    }
+    
+    if let comparator = comparator
+    {
+      self.comparator = comparator
+    }
+    else
+    {
+      self.comparator = emptyMovieComparator()
+    }
   }
 }
 
@@ -21,12 +46,14 @@ struct MovieListChangeGroup
 {
   let identifier: MovieListChangeIdentifier
   let title: String
+  let multipleSelection: Bool
   let references: [MovieListChangeReference]
   
-  init(identifier: MovieListChangeIdentifier, title: String, references: [MovieListChangeReference])
+  init(identifier: MovieListChangeIdentifier, title: String, multipleSelection: Bool, references: [MovieListChangeReference])
   {
     self.identifier = identifier
     self.title = title
+    self.multipleSelection = multipleSelection
     self.references = references
   }
 }
@@ -56,7 +83,8 @@ extension MovieOrdering
     return MovieListChangeReference(
       identifier: identifier,
       title: title,
-      change: movieListChange(comparator)
+      filter: nil,
+      comparator: comparator
     )
   }
 }

@@ -28,11 +28,12 @@
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="1KK-mS-P7P" secondAttribute="bottom" id="edz-HB-ZuE"/>
                 <constraint firstItem="1KK-mS-P7P" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="hed-cG-8d4"/>
+                <constraint firstAttribute="bottom" secondItem="1KK-mS-P7P" secondAttribute="bottom" id="i7v-Il-a4V"/>
                 <constraint firstItem="1KK-mS-P7P" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="nTb-cp-R14"/>
                 <constraint firstAttribute="trailing" secondItem="1KK-mS-P7P" secondAttribute="trailing" id="wQa-ah-hEK"/>
             </constraints>
+            <point key="canvasLocation" x="262" y="405"/>
         </view>
     </objects>
 </document>

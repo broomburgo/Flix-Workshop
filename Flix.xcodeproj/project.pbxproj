@@ -105,14 +105,12 @@
 		383D28CE1BD79796003A810B /* Flix */ = {
 			isa = PBXGroup;
 			children = (
+				3884FACF1BDA4145006BBB6D /* Basic */,
+				383D28E31BD79AC5003A810B /* Elements */,
 				3884FACA1BDA297F006BBB6D /* MovieListChange */,
 				38B3D89F1BD8EF810069953E /* Pages */,
+				3884FAD01BDA4152006BBB6D /* Resources */,
 				38B3D89A1BD8D1600069953E /* UI */,
-				383D28E31BD79AC5003A810B /* Elements */,
-				383D28CF1BD79796003A810B /* AppDelegate.swift */,
-				383D28D81BD79796003A810B /* LaunchScreen.storyboard */,
-				383D28FE1BD7E5A9003A810B /* top250.json */,
-				383D28DB1BD79796003A810B /* Info.plist */,
 			);
 			path = Flix;
 			sourceTree = "<group>";
@@ -141,11 +139,29 @@
 		3884FACA1BDA297F006BBB6D /* MovieListChange */ = {
 			isa = PBXGroup;
 			children = (
-				383D28E41BD79ADF003A810B /* MovieTypes.swift */,
-				38B3D8B31BD934210069953E /* MovieFunctions.swift */,
 				3884FACB1BDA2A08006BBB6D /* ChangeTypes.swift */,
+				38B3D8B31BD934210069953E /* MovieFunctions.swift */,
+				383D28E41BD79ADF003A810B /* MovieTypes.swift */,
 			);
 			name = MovieListChange;
+			sourceTree = "<group>";
+		};
+		3884FACF1BDA4145006BBB6D /* Basic */ = {
+			isa = PBXGroup;
+			children = (
+				383D28CF1BD79796003A810B /* AppDelegate.swift */,
+				383D28DB1BD79796003A810B /* Info.plist */,
+				383D28D81BD79796003A810B /* LaunchScreen.storyboard */,
+			);
+			name = Basic;
+			sourceTree = "<group>";
+		};
+		3884FAD01BDA4152006BBB6D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				383D28FE1BD7E5A9003A810B /* top250.json */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		38B3D89A1BD8D1600069953E /* UI */ = {
@@ -160,10 +176,10 @@
 		38B3D89F1BD8EF810069953E /* Pages */ = {
 			isa = PBXGroup;
 			children = (
-				383D28D11BD79796003A810B /* ListController.swift */,
-				383D28E11BD797DD003A810B /* ListController.xib */,
 				38B3D8A01BD8EF980069953E /* ListChangeController.swift */,
 				38B3D8A11BD8EF980069953E /* ListChangeController.xib */,
+				383D28D11BD79796003A810B /* ListController.swift */,
+				383D28E11BD797DD003A810B /* ListController.xib */,
 				38B3D8B51BD942880069953E /* MovieChangeController.swift */,
 				38B3D8B61BD942880069953E /* MovieChangeController.xib */,
 			);
