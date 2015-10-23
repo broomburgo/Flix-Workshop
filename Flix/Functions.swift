@@ -37,3 +37,10 @@ func stringReducerWithConnector(connector: String) -> (String,String) -> String
   }
 }
 
+func genresFromMovies (movies: [Movie]) -> [String]
+{
+  return movies
+    .flatMap { $0.genres }
+    .removeDuplicates([String]())
+}
+

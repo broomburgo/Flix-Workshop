@@ -42,7 +42,15 @@ func movieListChangeGroupsWithMovies(movies: [Movie]) -> [[MovieListChangeGroup]
         identifier: "genres",
         title: "Genres",
         multipleSelection: true,
-        references: []
+        references: genresFromMovies(movies)
+          .map { genre in
+            MovieListChangeReference(
+              identifier: genre,
+              title: genre,
+              filter: { $0.genres.contains(genre) },
+              comparator: nil
+            )
+        }
       ),
       MovieListChangeGroup(
         identifier: "rated",
