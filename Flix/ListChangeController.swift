@@ -90,7 +90,7 @@ extension ListChangeController: UITableViewDelegate
     navigationController?.pushViewController(controller, animated: true)
     
     controller.future.onComplete { [unowned self] selectedReference in
-      self.selectedIdentifiers[group.identifier] = selectedReference.identifier
+      self.selectedIdentifiers[group.identifier] = selectedReference?.identifier
       self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
       self.navigationController?.popViewControllerAnimated(true)
     }

@@ -5,7 +5,7 @@ class MovieChangeController: UIViewController
 {
   @IBOutlet weak var tableView: UITableView!
   
-  let future = Future<MovieListChangeReference>()
+  let future = Future<MovieListChangeReference?>()
 
   private let cellIdentifier = "cellIdentifier"
   
@@ -28,7 +28,19 @@ class MovieChangeController: UIViewController
   override func viewDidLoad()
   {
     super.viewDidLoad()
+    
+    navigationItem.rightBarButtonItem = UIBarButtonItem(
+      barButtonSystemItem: .Trash,
+      target: self,
+      action: Selector("didTapTrashButton")
+    )
+    
     tableView.reloadData()
+  }
+  
+  func didTapTrashButton()
+  {
+    future.completeWith(nil)
   }
 }
 
