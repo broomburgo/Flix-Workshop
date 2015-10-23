@@ -130,6 +130,22 @@ class FlixTests: XCTestCase
     let array3NoDuplicates = array3.removeDuplicates([])
     XCTAssertEqual(array3NoDuplicates, array3NoDuplicatesWannabe)
   }
+  
+  func testGenresFromMovies()
+  {
+    do
+    {
+      let movies = try getMoviesFromFileNamed(fileName)
+      let expectedGenres = ["Action","Crime","Drama"]
+      let genres = genresFromMovies(movies)
+      XCTAssertEqual(genres, expectedGenres)
+    }
+    catch let error as NSError
+    {
+      print(error)
+      XCTAssertTrue(false)
+    }
+  }
 }
 
 func assertMovies(movies: [Movie])
