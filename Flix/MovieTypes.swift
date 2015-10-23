@@ -66,6 +66,22 @@ enum Comparison: Int
   case Ascending = 1
   case Same = 0
   case Descending = -1
+  
+  init<T: Comparable>(first: T, second: T)
+  {
+    if first < second
+    {
+      self = .Ascending
+    }
+    else if first > second
+    {
+      self = .Descending
+    }
+    else
+    {
+      self = .Same
+    }
+  }
 }
 
 enum MovieOrdering: Equatable
@@ -86,11 +102,7 @@ enum MovieOrdering: Equatable
     case .Year(let ascending):
       return ascending ? "year ascending" : "year descending"
     }
-  }
-  
-  var comparator: MovieComparator {
-    return { _ in .Same }
-  }
+  }  
 }
 
 func == (lhs: MovieOrdering, rhs: MovieOrdering) -> Bool

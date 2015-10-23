@@ -10,6 +10,21 @@ func emptyMovieComparator() -> MovieComparator
   return { _ in .Same }
 }
 
+func movieComparatorFor (ascending: Bool, comparisonFunction: (Movie, Movie) -> Comparison) -> MovieComparator
+{
+  return {
+    let comparison = comparisonFunction($0,$1)
+    switch comparison {
+    case .Same:
+      return .Same
+    case .Ascending:
+      return ascending ? .Ascending : .Descending
+    case .Descending:
+      return ascending ? .Descending : .Ascending
+    }
+  }
+}
+
 func emptyMovieFilter() -> MovieFilter
 {
   return { _ in true }

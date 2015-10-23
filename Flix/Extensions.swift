@@ -56,11 +56,27 @@ extension NSComparisonResult
   {
     switch comparison {
     case .Ascending:
-      self = NSComparisonResult.OrderedAscending
+      self = .OrderedAscending
     case .Same:
-      self = NSComparisonResult.OrderedSame
+      self = .OrderedSame
     case .Descending:
-      self = NSComparisonResult.OrderedDescending
+      self = .OrderedDescending
+    }
+  }
+}
+
+extension Comparison
+{
+  init(withComparisonResult comparisonResult: NSComparisonResult)
+  {
+    switch comparisonResult
+    {
+    case .OrderedAscending:
+      self = .Ascending
+    case .OrderedSame:
+      self = .Same
+    case .OrderedDescending:
+      self = .Descending
     }
   }
 }

@@ -11,7 +11,14 @@ func movieListChangeGroupsWithMovies(movieList: [Movie]) -> [[MovieListChangeGro
       MovieListChangeGroup(
         identifier: "orderBy",
         title: "Order by",
-        references: []
+        references: [
+          MovieOrdering.Title(ascending: true).referenceWithIdentifier("orderBy1"),
+          MovieOrdering.Title(ascending: false).referenceWithIdentifier("orderBy2"),
+          MovieOrdering.Year(ascending: true).referenceWithIdentifier("orderBy3"),
+          MovieOrdering.Year(ascending: false).referenceWithIdentifier("orderBy4"),
+          MovieOrdering.Score(ascending: true).referenceWithIdentifier("orderBy5"),
+          MovieOrdering.Score(ascending: false).referenceWithIdentifier("orderBy6")
+        ]
       )
     ],
     [
