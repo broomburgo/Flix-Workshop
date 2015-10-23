@@ -113,7 +113,7 @@ class FlixTests: XCTestCase
     XCTAssertEqual(string5Trimmed, expectedString5Trimmed)
   }
   
-  func testremoveDuplicates()
+  func testRemoveDuplicates()
   {
     let array1 = ["a","n","g","a","z","b","c","h","d","d","d","l","p","a","z","z","n","g","b","c","h","l","s","x","f","e","g","e"]
     let array1NoDuplicatesWannabe = ["a","b","c","d","e","f","g","h","l","n","p","s","x","z"]

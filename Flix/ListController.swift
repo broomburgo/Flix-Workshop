@@ -70,6 +70,12 @@ class ListController: UIViewController
   {
     let count = moviesToShow.count
     let movieCaption = count == 1 ? "movie" : "movies"
+    
+    let titleLabel = UILabel()
+    titleLabel.text = "\(count) \(movieCaption)"
+    titleLabel.textColor = UIColor.whiteColor()
+    titleLabel.sizeToFit()
+    
     setToolbarItems(
       [
         UIBarButtonItem(
@@ -78,10 +84,7 @@ class ListController: UIViewController
           action: nil
         ),
         UIBarButtonItem(
-          title: "\(count) \(movieCaption)",
-          style: .Plain,
-          target: nil,
-          action: nil
+          customView: titleLabel
         ),
         UIBarButtonItem(
           barButtonSystemItem: .FlexibleSpace,
