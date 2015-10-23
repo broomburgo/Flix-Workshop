@@ -96,3 +96,28 @@ extension SequenceType
   }
 }
 
+extension RangeReplaceableCollectionType where Self.Generator.Element: Equatable, Self.Generator.Element: Comparable, Index: BidirectionalIndexType
+{
+  func removeDuplicates(empty: Self) -> Self
+  {
+    return self
+      .sort { $0 < $1 }
+      .reduce(empty) { (var accumulator, element) in
+        if let
+          last = accumulator.last
+          where last == element
+        {
+          return accumulator
+        }
+        else
+        {
+          accumulator.append(element)
+          return accumulator
+        }
+    }
+  }
+}
+
+
+
+
