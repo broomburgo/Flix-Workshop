@@ -131,14 +131,28 @@ class FlixTests: XCTestCase
     XCTAssertEqual(array3NoDuplicates, array3NoDuplicatesWannabe)
   }
   
-  func testGenresFromMovies()
+  func testElementsFromMovies()
   {
     do
     {
       let movies = try getMoviesFromFileNamed(fileName)
+      
       let expectedGenres = ["Action","Crime","Drama"]
-      let genres = genresFromMovies(movies)
+      let genres = elementsFromMovies { $0.genres } (movies)
       XCTAssertEqual(genres, expectedGenres)
+      
+      let expectedRated = ["PG-13","R"]
+      let rated = elementsFromMovies { [$0.rated] } (movies)
+      XCTAssertEqual(rated, expectedRated)
+      
+      let expectedDirectors = ["Christopher Nolan","Francis Ford Coppola","Frank Darabont"]
+      let directors = elementsFromMovies { $0.directors } (movies)
+      XCTAssertEqual(directors, expectedDirectors)
+      
+      let expectedWriters = ["Christopher Nolan","Francis Ford Coppola","Frank Darabont","Jonathan Nolan","Mario Puzo","Stephen King"]
+      let writers = elementsFromMovies { $0.writers } (movies)
+      XCTAssertEqual(writers, expectedWriters)
+
     }
     catch let error as NSError
     {
@@ -159,7 +173,9 @@ func assertMovies(movies: [Movie])
     year: 1994,
     genres: ["Crime","Drama"],
     plot: "Andy Dufresne is a young and successful banker whose life changes drastically when he is convicted and sentenced to life imprisonment for the murder of his wife and her lover. Set in the 1940s, the film shows how Andy, with the help of his friend Red, the prison entrepreneur, turns out to be a most unconventional prisoner.",
-    score: 9.3
+    score: 9.3,
+    rated: "R",
+    runtimeMinutes: 142
   )
   
   assertMovie(movies[1],
@@ -169,7 +185,9 @@ func assertMovies(movies: [Movie])
     year: 1972,
     genres: ["Crime","Drama"],
     plot: "When the aging head of a famous crime family decides to transfer his position to one of his subalterns, a series of unfortunate events start happening to the family, and a war begins between all the well-known families leading to insolence, deportation, murder and revenge, and ends with the favorable successor being finally chosen.",
-    score: 9.2
+    score: 9.2,
+    rated: "R",
+    runtimeMinutes: 175
   )
   
   assertMovie(movies[2],
@@ -179,7 +197,9 @@ func assertMovies(movies: [Movie])
     year: 2008,
     genres: ["Action","Crime","Drama"],
     plot: "Batman raises the stakes in his war on crime. With the help of Lieutenant Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the city streets. The partnership proves to be effective, but they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as The Joker.",
-    score: 9.0
+    score: 9.0,
+    rated: "PG-13",
+    runtimeMinutes: 152
   )
 }
 
@@ -191,7 +211,9 @@ func assertMovie(
   year: Int,
   genres: [String],
   plot: String,
-  score: Float
+  score: Float,
+  rated: String,
+  runtimeMinutes: Int
   )
 {
   XCTAssertEqual(movie.title, title)
@@ -201,4 +223,7 @@ func assertMovie(
   XCTAssertEqual(movie.genres, genres)
   XCTAssertEqual(movie.plot, plot)
   XCTAssertEqual(movie.score, score)
+  XCTAssertEqual(movie.rated, rated)
+  XCTAssertEqual(movie.runtimeMinutes, runtimeMinutes)
+
 }
