@@ -6,7 +6,7 @@ class ListController: UIViewController
   @IBOutlet weak var tableView: UITableView!
   
   private let movies: [Movie]
-  private var change: MovieListChange = { $0 } {
+  private var changes: [MovieListChange] = [] {
     didSet {
       tableView.setContentOffset(CGPointZero, animated: true)
       tableView.reloadData()
@@ -14,7 +14,7 @@ class ListController: UIViewController
     }
   }
   private var moviesToShow: [Movie] {
-    return change(movies)
+    return changes.reduce(emptyMovieListChange(), combine: •)(movies)
   }
   
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?)
@@ -98,20 +98,20 @@ class ListController: UIViewController
   func didTapEdit()
   {
     let filterController = ListChangeController(
-      movieListChangeGroups: movieListChangeGroupsWithMovies(movies)
+      movieListChangeGroups: movieListChangeGroupsWithMovies(moviesToShow)
     )
     
     navigationController?.pushViewController(filterController, animated: true)
     
     filterController.future.onComplete { [unowned self] newChange in
-      self.change = newChange
+      self.changes.append(newChange)
       self.navigationController?.popViewControllerAnimated(true)
     }
   }
   
   func didTapClear()
   {
-    change = emptyMovieListChange()
+    changes = []
   }
 }
 
