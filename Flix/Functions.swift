@@ -37,15 +37,17 @@ func stringReducerWithConnector(connector: String) -> (String,String) -> String
   }
 }
 
-func elementsFromMovies (binding: Movie -> [String])(_ movies: [Movie]) -> [String]
+func elementsFromMovies <T: Comparable> (binding: Movie -> [T])(_ movies: [Movie]) -> [T]
 {
   return movies
     .flatMap(binding)
-    .removeDuplicates([String]())
+    .removeDuplicates([T]())
 }
 
+let runtimeMinutesFromMovies = elementsFromMovies { [$0.runtimeMinutes] }
+let yearsFromMovies = elementsFromMovies { [$0.year] }
 let genresFromMovies = elementsFromMovies { $0.genres }
 let ratedFromMovies = elementsFromMovies { [$0.rated] }
-let directorsFromMovies = elementsFromMovies { $0.directors }
+let directorsFromMovies = elementsFromMovies{ $0.directors }
 let writersFromMovies = elementsFromMovies { $0.writers }
 

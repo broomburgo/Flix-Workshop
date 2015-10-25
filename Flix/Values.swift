@@ -26,15 +26,18 @@ func movieListChangeGroupsWithMovies(movies: [Movie]) -> [[MovieListChangeGroup]
     [
       MovieListChangeGroup(
         identifier: "maxDuration",
-        title: "Max duration",
+        title: "Max duration (minutes)",
         multipleSelection: false,
-        references: []
+        references: runtimeMinutesFromMovies(movies)
+          .getFilterReferences { movie, runtimeMinutes in movie.runtimeMinutes <= runtimeMinutes }
       ),
       MovieListChangeGroup(
         identifier: "minYear",
         title: "Min year",
         multipleSelection: false,
-        references: []
+        references: yearsFromMovies(movies)
+          .sort { $0 > $1 }
+          .getFilterReferences { movie, year in movie.year >= year }
       )
     ],
     [
