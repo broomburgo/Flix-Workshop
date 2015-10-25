@@ -96,6 +96,25 @@ extension SequenceType
   }
 }
 
+extension Array
+{
+  var head: Element? {
+    return first
+  }
+  
+  var tail: Array? {
+    guard count > 1 else { return nil }
+    return Array(self[1..<count])
+  }
+  
+  func reduce (@noescape reducer: (Element, Element) -> Element) -> Element?
+  {
+    guard let head = head else { return nil }
+    guard let tail = tail else { return head }
+    return tail.reduce(head, combine: reducer)
+  }
+}
+
 extension RangeReplaceableCollectionType where Self.Generator.Element: Equatable, Self.Generator.Element: Comparable, Index: BidirectionalIndexType
 {
   func removeDuplicates(empty: Self) -> Self
@@ -117,7 +136,6 @@ extension RangeReplaceableCollectionType where Self.Generator.Element: Equatable
     }
   }
 }
-
 
 
 

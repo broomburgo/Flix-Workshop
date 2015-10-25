@@ -98,9 +98,9 @@ class MovieChangeController: UIViewController
       .reduce("", combine: stringReducerWithConnector(", "))
       .trim(", ")
     
-    let combinedFilter = movieFilterWithReferences(validReferences)
+    let combinedFilter = movieFilterWithReferences(validReferences, reducer: ||)
     
-    let combinedComparator = movieComparatorWithReferences(validReferences)
+    let combinedComparator = movieComparatorWithReferences(validReferences, reducer: &&)
     
     future.completeWith(MovieListChangeReference(
       identifier: combinedIdentifier,

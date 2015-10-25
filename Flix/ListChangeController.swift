@@ -50,8 +50,8 @@ class ListChangeController: UIViewController
   {
     let references = Array(selectedReferences.values)
     let change = movieListChange(
-      filter: movieFilterWithReferences(references),
-      comparator: movieComparatorWithReferences(references)
+      filter: movieFilterWithReferences(references, reducer: &&),
+      comparator: movieComparatorWithReferences(references, reducer: &&)
     )
     future.completeWith(change)
   }

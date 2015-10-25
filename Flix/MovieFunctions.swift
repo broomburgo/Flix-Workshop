@@ -78,25 +78,17 @@ func movieListChange (comparator: MovieComparator) -> MovieListChange
   return movieListChange (filter: nil, comparator: comparator)
 }
 
-func movieFilterWithReferences (references: [MovieListChangeReference]) -> MovieFilter?
+func movieFilterWithReferences (references: [MovieListChangeReference], @noescape reducer: (MovieFilter, MovieFilter) -> MovieFilter) -> MovieFilter?
 {
-  let filters = references
+  return references
     .flatMap { $0.filter }
-  
-  guard filters.count > 0 else { return nil }
-  
-  return filters
-    .reduce(movieFilterNone(), combine: ||)
+    .reduce(reducer)
 }
 
-func movieComparatorWithReferences (references: [MovieListChangeReference]) -> MovieComparator?
+func movieComparatorWithReferences (references: [MovieListChangeReference], @noescape reducer: (MovieComparator, MovieComparator) -> MovieComparator) -> MovieComparator?
 {
-  let comparators = references
+  return references
     .flatMap { $0.comparator }
-  
-  guard comparators.count > 0 else { return nil }
-  
-  return comparators
-    .reduce(movieComparatorSame(), combine: &&)
+    .reduce(reducer)
 }
 
