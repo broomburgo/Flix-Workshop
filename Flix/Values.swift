@@ -64,7 +64,15 @@ func movieListChangeGroupsWithMovies(movies: [Movie]) -> [[MovieListChangeGroup]
         identifier: "directors",
         title: "Directors",
         multipleSelection: true,
-        references: []
+        references: directorsFromMovies(movies)
+          .map { director in
+            MovieListChangeReference(
+              identifier: director,
+              title: director,
+              filter: { $0.directors.contains(director) },
+              comparator: nil
+            )
+        }
       ),
       MovieListChangeGroup(
         identifier: "writers",
