@@ -43,20 +43,14 @@ func movieListChangeGroupsWithMovies(movies: [Movie]) -> [[MovieListChangeGroup]
         title: "Genres",
         multipleSelection: true,
         references: genresFromMovies(movies)
-          .map { genre in
-            MovieListChangeReference(
-              identifier: genre,
-              title: genre,
-              filter: { $0.genres.contains(genre) },
-              comparator: nil
-            )
-        }
+          .getFilterReferences { movie, genre in movie.genres.contains(genre) }
       ),
       MovieListChangeGroup(
         identifier: "rated",
         title: "Rated",
         multipleSelection: true,
-        references: []
+        references: ratedFromMovies(movies)
+          .getFilterReferences { movie, rated in movie.rated == rated }
       )
     ],
     [
@@ -65,20 +59,14 @@ func movieListChangeGroupsWithMovies(movies: [Movie]) -> [[MovieListChangeGroup]
         title: "Directors",
         multipleSelection: true,
         references: directorsFromMovies(movies)
-          .map { director in
-            MovieListChangeReference(
-              identifier: director,
-              title: director,
-              filter: { $0.directors.contains(director) },
-              comparator: nil
-            )
-        }
+          .getFilterReferences { movie, director in movie.directors.contains(director) }
       ),
       MovieListChangeGroup(
         identifier: "writers",
         title: "Writers",
         multipleSelection: true,
-        references: []
+        references: writersFromMovies(movies)
+          .getFilterReferences { movie, writer in movie.writers.contains(writer) }
       )
     ]
   ]
