@@ -41,7 +41,7 @@ func elementsFromMovies <T: Comparable> (binding: Movie -> [T])(_ movies: [Movie
 {
   return movies
     .flatMap(binding)
-    .removeDuplicates([T]())
+    .removeDuplicates()
 }
 
 let runtimeMinutesFromMovies = elementsFromMovies { [$0.runtimeMinutes] }

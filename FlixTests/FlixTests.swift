@@ -117,17 +117,17 @@ class FlixTests: XCTestCase
   {
     let array1 = ["a","n","g","a","z","b","c","h","d","d","d","l","p","a","z","z","n","g","b","c","h","l","s","x","f","e","g","e"]
     let array1NoDuplicatesWannabe = ["a","b","c","d","e","f","g","h","l","n","p","s","x","z"]
-    let array1NoDuplicates = array1.removeDuplicates([])
+    let array1NoDuplicates = array1.removeDuplicates()
     XCTAssertEqual(array1NoDuplicates, array1NoDuplicatesWannabe)
     
     let array2 = ["a","a","a"]
     let array2NoDuplicatesWannabe = ["a"]
-    let array2NoDuplicates = array2.removeDuplicates([])
+    let array2NoDuplicates = array2.removeDuplicates()
     XCTAssertEqual(array2NoDuplicates, array2NoDuplicatesWannabe)
     
     let array3 = [String]()
     let array3NoDuplicatesWannabe = [String]()
-    let array3NoDuplicates = array3.removeDuplicates([])
+    let array3NoDuplicates = array3.removeDuplicates()
     XCTAssertEqual(array3NoDuplicates, array3NoDuplicatesWannabe)
   }
   

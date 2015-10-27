@@ -115,13 +115,13 @@ extension Array
   }
 }
 
-extension RangeReplaceableCollectionType where Self.Generator.Element: Equatable, Self.Generator.Element: Comparable, Index: BidirectionalIndexType
+extension Array where Element: Comparable
 {
-  func removeDuplicates(empty: Self) -> Self
+  func removeDuplicates() -> Array
   {
     return self
       .sort { $0 < $1 }
-      .reduce(empty) { (var accumulator, element) in
+      .reduce([]) { (var accumulator, element) in
         if let
           last = accumulator.last
           where last == element
