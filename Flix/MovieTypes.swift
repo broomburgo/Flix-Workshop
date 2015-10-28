@@ -16,67 +16,83 @@ public struct Movie {
   public let directorsString: String
   public let writersString: String
   
+  public init(title: String, directors: [String], writers: [String], year: Int, genres: [String], plot: String, score: Float, rated: String, runtimeMinutes: Int)
+  {
+    self.title = title
+    self.directors = directors
+    self.writers = writers
+    self.year = year
+    self.genres = genres
+    self.plot = plot
+    self.score = score
+    self.rated = rated
+    self.runtimeMinutes = runtimeMinutes
+    
+    let connector = ", "
+
+    self.genresString = genres
+      .reduce("", combine: stringReducerWithConnector(connector))
+      .trim(connector)
+    
+    self.directorsString = directors
+      .reduce("", combine: stringReducerWithConnector(connector))
+      .trim(connector)
+    
+    self.writersString = writers
+      .reduce("", combine: stringReducerWithConnector(connector))
+      .trim(connector)
+  }
+  
   public init(dict: [String:AnyObject])
   {
     let unknown = "UNKNOWN"
     
-    title = dict
-      .valueForKey("title", asType: String.self)
-      .getOrElse(unknown)
-    
-    directors = dict
-      .valueForKey("directors", asType: [[String:String]].self)
-      .getOrElse([])
-      .map { $0["name"].getOrElse(unknown) }
-    
-    writers = dict
-      .valueForKey("writers", asType: [[String:String]].self)
-      .getOrElse([])
-      .map { $0["name"].getOrElse(unknown) }
-    
-    year = dict
-      .valueForKey("year", asType: String.self)
-      .flatMap { Int($0) }
-      .getOrElse(0)
-    
-    genres = dict
-      .valueForKey("genres", asType: [String].self)
-      .getOrElse([])
-    
-    plot = dict
-      .valueForKey("plot", asType: String.self)
-      .getOrElse(unknown)
-    
-    score = dict
-      .valueForKey("rating", asType: String.self)
-      .flatMap(Float.init)
-      .getOrElse(0)
-    
-    rated = dict
-      .valueForKey("rated", asType: String.self)
-      .getOrElse("NOT RATED")
-    
-    runtimeMinutes = dict
-      .valueForKey("runtime", asType: Array<String>.self)
-      .flatMap { $0.first }
-      .map { $0.trim(" min") }
-      .flatMap { Int($0) }
-      .getOrElse(0)
-    
-    let connector = ", "
-    
-    genresString = genres
-      .reduce("", combine: stringReducerWithConnector(connector))
-      .trim(connector)
-    
-    directorsString = directors
-      .reduce("", combine: stringReducerWithConnector(connector))
-      .trim(connector)
-
-    writersString = writers
-      .reduce("", combine: stringReducerWithConnector(connector))
-      .trim(connector)
-  }  
+    self.init(
+      
+      title: dict
+        .valueForKey("title", asType: String.self)
+        .getOrElse(unknown),
+      
+      directors: dict
+        .valueForKey("directors", asType: [[String:String]].self)
+        .getOrElse([])
+        .map { $0["name"].getOrElse(unknown) },
+      
+      writers: dict
+        .valueForKey("writers", asType: [[String:String]].self)
+        .getOrElse([])
+        .map { $0["name"].getOrElse(unknown) },
+      
+      year: dict
+        .valueForKey("year", asType: String.self)
+        .flatMap { Int($0) }
+        .getOrElse(0),
+      
+      genres: dict
+        .valueForKey("genres", asType: [String].self)
+        .getOrElse([]),
+      
+      plot: dict
+        .valueForKey("plot", asType: String.self)
+        .getOrElse(unknown),
+      
+      score: dict
+        .valueForKey("rating", asType: String.self)
+        .flatMap(Float.init)
+        .getOrElse(0),
+      
+      rated: dict
+        .valueForKey("rated", asType: String.self)
+        .getOrElse("NOT RATED"),
+      
+      runtimeMinutes: dict
+        .valueForKey("runtime", asType: Array<String>.self)
+        .flatMap { $0.first }
+        .map { $0.trim(" min") }
+        .flatMap { Int($0) }
+        .getOrElse(0)
+    )
+  }
 }
 
 enum Comparison: Int
