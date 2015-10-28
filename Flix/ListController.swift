@@ -9,19 +9,19 @@ class ListController: UIViewController
   private var changes: [MovieListChange] = [] {
     didSet {
       tableView.setContentOffset(CGPointZero, animated: true)
+      moviesToShow = changes.reduce(emptyMovieListChange(), combine: •)(movies)
       tableView.reloadData()
       updateToolbar()
     }
   }
-  private var moviesToShow: [Movie] {
-    return changes.reduce(emptyMovieListChange(), combine: •)(movies)
-  }
+  private var moviesToShow = [Movie]()
   
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?)
   {
     do
     {
       movies = try getMoviesFromFileNamed("top250.json")
+      moviesToShow = movies
     }
     catch let error as NSError
     {
