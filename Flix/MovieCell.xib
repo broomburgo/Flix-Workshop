@@ -50,28 +50,28 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genres" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="e7h-HT-oEI">
-                        <rect key="frame" x="14" y="60.5" width="40.5" height="14.5"/>
+                        <rect key="frame" x="14" y="60" width="40.5" height="14.5"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="director1,director2" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="F3l-Ze-nlw">
-                        <rect key="frame" x="73.5" y="83" width="105" height="14.5"/>
+                        <rect key="frame" x="73" y="83" width="105" height="14.5"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Writers:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="j2l-L2-Oiq">
-                        <rect key="frame" x="14" y="105.5" width="44.5" height="14.5"/>
+                        <rect key="frame" x="14" y="105" width="44.5" height="14.5"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="writer1,writer2" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UK3-9W-jHs">
-                        <rect key="frame" x="62.5" y="105.5" width="80.5" height="14.5"/>
+                        <rect key="frame" x="62" y="105" width="80.5" height="14.5"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -90,6 +90,7 @@
                     <constraint firstItem="1P7-ee-Clb" firstAttribute="top" secondItem="e7h-HT-oEI" secondAttribute="bottom" constant="8" id="04r-mZ-pb7"/>
                     <constraint firstItem="e7h-HT-oEI" firstAttribute="leading" secondItem="yfU-ee-gUQ" secondAttribute="leading" id="0Hy-9T-kZx"/>
                     <constraint firstItem="e7h-HT-oEI" firstAttribute="top" secondItem="wJV-Kc-xEa" secondAttribute="bottom" constant="8" id="3Rf-od-SrQ"/>
+                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="yfU-ee-gUQ" secondAttribute="trailing" constant="6" id="7Pl-wm-Pjx"/>
                     <constraint firstItem="F3l-Ze-nlw" firstAttribute="leading" secondItem="1P7-ee-Clb" secondAttribute="trailing" constant="4" id="AGc-93-2uB"/>
                     <constraint firstItem="UK3-9W-jHs" firstAttribute="leading" secondItem="j2l-L2-Oiq" secondAttribute="trailing" constant="4" id="Bx6-5P-uCA"/>
                     <constraint firstItem="5ZI-qV-U36" firstAttribute="centerY" secondItem="wJV-Kc-xEa" secondAttribute="centerY" id="Car-f4-55v"/>
@@ -101,10 +102,13 @@
                     <constraint firstItem="hbj-dS-GJa" firstAttribute="leading" secondItem="5ZI-qV-U36" secondAttribute="trailing" constant="22" id="WNJ-tL-v2w"/>
                     <constraint firstItem="1P7-ee-Clb" firstAttribute="leading" secondItem="yfU-ee-gUQ" secondAttribute="leading" id="aBy-6h-KOt"/>
                     <constraint firstItem="F3l-Ze-nlw" firstAttribute="centerY" secondItem="1P7-ee-Clb" secondAttribute="centerY" id="dlB-jM-ET8"/>
+                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="UK3-9W-jHs" secondAttribute="trailing" constant="6" id="h6h-J2-3vL"/>
                     <constraint firstItem="wJV-Kc-xEa" firstAttribute="top" secondItem="yfU-ee-gUQ" secondAttribute="bottom" constant="12" id="hxQ-tB-RgU"/>
+                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="e7h-HT-oEI" secondAttribute="trailing" constant="6" id="k4D-Dh-vVc"/>
                     <constraint firstItem="yfU-ee-gUQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="mKY-MK-dQK"/>
                     <constraint firstItem="wJV-Kc-xEa" firstAttribute="leading" secondItem="yfU-ee-gUQ" secondAttribute="leading" id="oQl-iz-Tge"/>
                     <constraint firstItem="5ZI-qV-U36" firstAttribute="leading" secondItem="wJV-Kc-xEa" secondAttribute="trailing" constant="22" id="p28-Iq-jCd"/>
+                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="F3l-Ze-nlw" secondAttribute="trailing" constant="6" id="pEa-le-fKv"/>
                     <constraint firstItem="080-yp-AKx" firstAttribute="centerY" secondItem="wJV-Kc-xEa" secondAttribute="centerY" id="sMt-LJ-szt"/>
                     <constraint firstItem="hbj-dS-GJa" firstAttribute="centerY" secondItem="wJV-Kc-xEa" secondAttribute="centerY" id="w5N-A1-RA9"/>
                 </constraints>
@@ -122,7 +126,7 @@
                 <outlet property="writersLabel" destination="UK3-9W-jHs" id="Hbh-1X-5ki"/>
                 <outlet property="yearLabel" destination="wJV-Kc-xEa" id="aU4-35-85P"/>
             </connections>
-            <point key="canvasLocation" x="82" y="182"/>
+            <point key="canvasLocation" x="161" y="267"/>
         </tableViewCell>
     </objects>
 </document>
