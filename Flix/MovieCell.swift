@@ -15,7 +15,7 @@ class MovieCell: UITableViewCell
   @IBOutlet weak var writersLabel: UILabel!
   
   static let defaultHeight = Float(130)
-  static let defaultIdentifier = "CellIdentifier"
+  static let defaultIdentifier = "MovieCell"
   
   static func cell(indentifier identifier: String) -> MovieCell
   {
@@ -33,19 +33,9 @@ class MovieCell: UITableViewCell
     durationLabel.text = "\(movie.runtimeMinutes) min"
     ratedLabel.text = movie.rated
     
-    let connector = ", "
-    
-    genresLabel.text = movie.genres
-      .reduce("", combine: stringReducerWithConnector(connector))
-      .trim(", ")
-    
-    directorsLabel.text = movie.directors
-      .reduce("", combine: stringReducerWithConnector(connector))
-      .trim(", ")
-    
-    writersLabel.text = movie.writers
-      .reduce("", combine: stringReducerWithConnector(connector))
-      .trim(", ")
+    genresLabel.text = movie.genresString
+    directorsLabel.text = movie.directorsString
+    writersLabel.text = movie.writersString
     
     return self
   }

@@ -12,6 +12,10 @@ public struct Movie {
   public let rated: String
   public let runtimeMinutes: Int
   
+  public let genresString: String
+  public let directorsString: String
+  public let writersString: String
+  
   public init(dict: [String:AnyObject])
   {
     let unknown = "UNKNOWN"
@@ -58,7 +62,21 @@ public struct Movie {
       .map { $0.trim(" min") }
       .flatMap { Int($0) }
       .getOrElse(0)
-  }
+    
+    let connector = ", "
+    
+    genresString = genres
+      .reduce("", combine: stringReducerWithConnector(connector))
+      .trim(connector)
+    
+    directorsString = directors
+      .reduce("", combine: stringReducerWithConnector(connector))
+      .trim(connector)
+
+    writersString = writers
+      .reduce("", combine: stringReducerWithConnector(connector))
+      .trim(connector)
+  }  
 }
 
 enum Comparison: Int

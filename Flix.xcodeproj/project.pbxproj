@@ -10,24 +10,24 @@
 		383D28D01BD79796003A810B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383D28CF1BD79796003A810B /* AppDelegate.swift */; };
 		383D28D21BD79796003A810B /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383D28D11BD79796003A810B /* ListController.swift */; };
 		383D28DA1BD79796003A810B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 383D28D81BD79796003A810B /* LaunchScreen.storyboard */; };
-		383D28E21BD797DD003A810B /* ListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 383D28E11BD797DD003A810B /* ListController.xib */; settings = {ASSET_TAGS = (); }; };
-		383D28E51BD79ADF003A810B /* MovieTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383D28E41BD79ADF003A810B /* MovieTypes.swift */; settings = {ASSET_TAGS = (); }; };
-		383D28E71BD79BCB003A810B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383D28E61BD79BCB003A810B /* Extensions.swift */; settings = {ASSET_TAGS = (); }; };
+		383D28E21BD797DD003A810B /* ListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 383D28E11BD797DD003A810B /* ListController.xib */; };
+		383D28E51BD79ADF003A810B /* MovieTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383D28E41BD79ADF003A810B /* MovieTypes.swift */; };
+		383D28E71BD79BCB003A810B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383D28E61BD79BCB003A810B /* Extensions.swift */; };
 		383D28EF1BD79FB5003A810B /* FlixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383D28EE1BD79FB5003A810B /* FlixTests.swift */; };
-		383D28F91BD7C84E003A810B /* top3.json in Resources */ = {isa = PBXBuildFile; fileRef = 383D28F81BD7C84E003A810B /* top3.json */; settings = {ASSET_TAGS = (); }; };
-		383D28FB1BD7CF66003A810B /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383D28FA1BD7CF66003A810B /* Functions.swift */; settings = {ASSET_TAGS = (); }; };
-		383D28FD1BD7D8F5003A810B /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383D28FC1BD7D8F5003A810B /* Future.swift */; settings = {ASSET_TAGS = (); }; };
-		383D28FF1BD7E5A9003A810B /* top250.json in Resources */ = {isa = PBXBuildFile; fileRef = 383D28FE1BD7E5A9003A810B /* top250.json */; settings = {ASSET_TAGS = (); }; };
-		3848BB441BDCE21200224477 /* MovieExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3848BB431BDCE21200224477 /* MovieExtensions.swift */; settings = {ASSET_TAGS = (); }; };
-		3884FACC1BDA2A08006BBB6D /* ChangeTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3884FACB1BDA2A08006BBB6D /* ChangeTypes.swift */; settings = {ASSET_TAGS = (); }; };
-		38B3D89D1BD8D1750069953E /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B3D89B1BD8D1750069953E /* MovieCell.swift */; settings = {ASSET_TAGS = (); }; };
-		38B3D89E1BD8D1750069953E /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38B3D89C1BD8D1750069953E /* MovieCell.xib */; settings = {ASSET_TAGS = (); }; };
-		38B3D8A21BD8EF980069953E /* ListChangeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B3D8A01BD8EF980069953E /* ListChangeController.swift */; settings = {ASSET_TAGS = (); }; };
-		38B3D8A31BD8EF980069953E /* ListChangeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38B3D8A11BD8EF980069953E /* ListChangeController.xib */; settings = {ASSET_TAGS = (); }; };
-		38B3D8A51BD908450069953E /* Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B3D8A41BD908450069953E /* Values.swift */; settings = {ASSET_TAGS = (); }; };
-		38B3D8B41BD934210069953E /* MovieFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B3D8B31BD934210069953E /* MovieFunctions.swift */; settings = {ASSET_TAGS = (); }; };
-		38B3D8B71BD942880069953E /* MovieChangeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B3D8B51BD942880069953E /* MovieChangeController.swift */; settings = {ASSET_TAGS = (); }; };
-		38B3D8B81BD942880069953E /* MovieChangeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38B3D8B61BD942880069953E /* MovieChangeController.xib */; settings = {ASSET_TAGS = (); }; };
+		383D28F91BD7C84E003A810B /* top3.json in Resources */ = {isa = PBXBuildFile; fileRef = 383D28F81BD7C84E003A810B /* top3.json */; };
+		383D28FB1BD7CF66003A810B /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383D28FA1BD7CF66003A810B /* Functions.swift */; };
+		383D28FD1BD7D8F5003A810B /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383D28FC1BD7D8F5003A810B /* Future.swift */; };
+		383D28FF1BD7E5A9003A810B /* top250.json in Resources */ = {isa = PBXBuildFile; fileRef = 383D28FE1BD7E5A9003A810B /* top250.json */; };
+		3848BB441BDCE21200224477 /* MovieExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3848BB431BDCE21200224477 /* MovieExtensions.swift */; };
+		3884FACC1BDA2A08006BBB6D /* ChangeTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3884FACB1BDA2A08006BBB6D /* ChangeTypes.swift */; };
+		38B3D89D1BD8D1750069953E /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B3D89B1BD8D1750069953E /* MovieCell.swift */; };
+		38B3D89E1BD8D1750069953E /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38B3D89C1BD8D1750069953E /* MovieCell.xib */; };
+		38B3D8A21BD8EF980069953E /* ListChangeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B3D8A01BD8EF980069953E /* ListChangeController.swift */; };
+		38B3D8A31BD8EF980069953E /* ListChangeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38B3D8A11BD8EF980069953E /* ListChangeController.xib */; };
+		38B3D8A51BD908450069953E /* Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B3D8A41BD908450069953E /* Values.swift */; };
+		38B3D8B41BD934210069953E /* MovieFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B3D8B31BD934210069953E /* MovieFunctions.swift */; };
+		38B3D8B71BD942880069953E /* MovieChangeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B3D8B51BD942880069953E /* MovieChangeController.swift */; };
+		38B3D8B81BD942880069953E /* MovieChangeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38B3D8B61BD942880069953E /* MovieChangeController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -238,6 +238,7 @@
 				TargetAttributes = {
 					383D28CB1BD79796003A810B = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 5MTJLVM7R2;
 					};
 					383D28EB1BD79FB5003A810B = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -426,10 +427,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Flix/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = it.elvi.Flix;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -437,10 +441,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Flix/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = it.elvi.Flix;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
