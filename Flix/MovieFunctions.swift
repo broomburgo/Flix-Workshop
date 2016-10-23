@@ -1,102 +1,80 @@
 
 import Foundation
 
-func movieComparatorSame() -> MovieComparator
-{
-  return { _ in .Same }
+func movieComparatorSame() -> MovieComparator {
+  return { _ in .same }
 }
 
-func movieComparatorFor (ascending: Bool, comparisonFunction: (Movie, Movie) -> Comparison) -> MovieComparator
-{
+func movieComparatorFor (_ ascending: Bool, comparisonFunction: @escaping (Movie, Movie) -> Comparison) -> MovieComparator {
   return {
     let comparison = comparisonFunction($0,$1)
     switch comparison {
-    case .Same:
-      return .Same
-    case .Ascending:
-      return ascending ? .Ascending : .Descending
-    case .Descending:
-      return ascending ? .Descending : .Ascending
+    case .same:
+      return .same
+    case .ascending:
+      return ascending ? .ascending : .descending
+    case .descending:
+      return ascending ? .descending : .ascending
     }
   }
 }
 
-func && (lhs: MovieComparator, rhs: MovieComparator) -> MovieComparator
-{
+func && (lhs: @escaping MovieComparator, rhs: @escaping MovieComparator) -> MovieComparator {
   return { m1, m2 in
     let comparison = lhs(m1,m2)
     switch comparison {
-    case .Ascending:
+    case .ascending:
       return comparison
-    case .Same:
+    case .same:
       return rhs(m1,m2)
-    case .Descending:
+    case .descending:
       return comparison
     }
   }
 }
 
-func movieFilterAll() -> MovieFilter
-{
+func movieFilterAll() -> MovieFilter {
   return { _ in true }
 }
 
-func movieFilterNone() -> MovieFilter
-{
+func movieFilterNone() -> MovieFilter {
   return { _ in false }
 }
 
-func || (lhs: MovieFilter, rhs: MovieFilter) -> MovieFilter
-{
+func || (lhs: @escaping MovieFilter, rhs: @escaping MovieFilter) -> MovieFilter {
   return { lhs($0) || rhs($0) }
 }
 
-func && (lhs: MovieFilter, rhs: MovieFilter) -> MovieFilter
-{
+func && (lhs: @escaping MovieFilter, rhs: @escaping MovieFilter) -> MovieFilter {
   return { lhs($0) && rhs($0) }
 }
 
-func emptyMovieListChange() -> MovieListChange
-{
+func emptyMovieListChange() -> MovieListChange {
   return movieListChange(filter: nil, comparator: movieComparatorSame())
 }
 
-func movieListChange (filter filter: MovieFilter?, comparator: MovieComparator?) -> MovieListChange
-{
+func movieListChange (filter: MovieFilter?, comparator: MovieComparator?) -> MovieListChange {
   let filterChange: MovieListChange = { movies in filter.map { movies.filter($0) }.getOrElse(movies) }
-  let comparatorChange: MovieListChange = { movies in comparator.map { movies.sort(isOrderedBefore•$0) }.getOrElse(movies) }
+  let comparatorChange: MovieListChange = { movies in comparator.map { movies.sorted(by: isOrderedBefore•$0) }.getOrElse(movies) }
   return comparatorChange•filterChange
 }
 
-func movieListChange (filter: MovieFilter) -> MovieListChange
-{
+func movieListChange (_ filter: @escaping MovieFilter) -> MovieListChange {
   return movieListChange(filter: filter, comparator: nil)
 }
 
-func movieListChange (comparator: MovieComparator) -> MovieListChange
-{
+func movieListChange (_ comparator: @escaping MovieComparator) -> MovieListChange {
   return movieListChange (filter: nil, comparator: comparator)
 }
 
-func movieFilterWithReferences (references: [MovieListChangeReference], @noescape reducer: (MovieFilter, MovieFilter) -> MovieFilter) -> MovieFilter?
-{
+func movieFilterWithReferences (_ references: [MovieListChangeReference], reducer: (@escaping MovieFilter, @escaping MovieFilter) -> MovieFilter) -> MovieFilter? {
   return references
     .flatMap { $0.filter }
-    .reduce(reducer)
+	.accumulate(with: reducer)
 }
 
-func movieComparatorWithReferences (references: [MovieListChangeReference], @noescape reducer: (MovieComparator, MovieComparator) -> MovieComparator) -> MovieComparator?
-{
+func movieComparatorWithReferences (_ references: [MovieListChangeReference], reducer: (@escaping MovieComparator, @escaping  MovieComparator) -> MovieComparator) -> MovieComparator? {
   return references
     .flatMap { $0.comparator }
-    .reduce(reducer)
+	.accumulate(with: reducer)
 }
-
-
-
-
-
-
-
-
-

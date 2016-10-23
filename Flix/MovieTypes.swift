@@ -16,8 +16,7 @@ public struct Movie {
   public let directorsString: String
   public let writersString: String
   
-  public init(title: String, directors: [String], writers: [String], year: Int, genres: [String], plot: String, score: Float, rated: String, runtimeMinutes: Int)
-  {
+  public init(title: String, directors: [String], writers: [String], year: Int, genres: [String], plot: String, score: Float, rated: String, runtimeMinutes: Int) {
     self.title = title
     self.directors = directors
     self.writers = writers
@@ -31,62 +30,61 @@ public struct Movie {
     let connector = ", "
 
     self.genresString = genres
-      .reduce("", combine: stringReducerWithConnector(connector))
+      .reduce("", stringReducerWithConnector(connector))
       .trim(connector)
     
     self.directorsString = directors
-      .reduce("", combine: stringReducerWithConnector(connector))
+      .reduce("", stringReducerWithConnector(connector))
       .trim(connector)
     
     self.writersString = writers
-      .reduce("", combine: stringReducerWithConnector(connector))
+      .reduce("", stringReducerWithConnector(connector))
       .trim(connector)
   }
   
-  public init(dict: [String:AnyObject])
-  {
+  public init(dict: [String:AnyObject]) {
     let unknown = "UNKNOWN"
     
     self.init(
       
       title: dict
-        .valueForKey("title", asType: String.self)
+		.value(at: "title", as: String.self)
         .getOrElse(unknown),
       
       directors: dict
-        .valueForKey("directors", asType: [[String:String]].self)
+		.value(at: "directors", as: [[String:String]].self)
         .getOrElse([])
         .map { $0["name"].getOrElse(unknown) },
       
       writers: dict
-        .valueForKey("writers", asType: [[String:String]].self)
+        .value(at: "writers", as: [[String:String]].self)
         .getOrElse([])
         .map { $0["name"].getOrElse(unknown) },
       
       year: dict
-        .valueForKey("year", asType: String.self)
+        .value(at: "year", as: String.self)
         .flatMap { Int($0) }
         .getOrElse(0),
       
       genres: dict
-        .valueForKey("genres", asType: [String].self)
+        .value(at: "genres", as: [String].self)
         .getOrElse([]),
       
       plot: dict
-        .valueForKey("plot", asType: String.self)
+        .value(at: "plot", as: String.self)
         .getOrElse(unknown),
       
       score: dict
-        .valueForKey("rating", asType: String.self)
+        .value(at: "rating", as: String.self)
         .flatMap(Float.init)
         .getOrElse(0),
       
       rated: dict
-        .valueForKey("rated", asType: String.self)
+        .value(at: "rated", as: String.self)
         .getOrElse("NOT RATED"),
       
       runtimeMinutes: dict
-        .valueForKey("runtime", asType: Array<String>.self)
+        .value(at: "runtime", as: Array<String>.self)
         .flatMap { $0.first }
         .map { $0.trim(" min") }
         .flatMap { Int($0) }
@@ -95,60 +93,51 @@ public struct Movie {
   }
 }
 
-enum Comparison: Int
-{
-  case Ascending = 1
-  case Same = 0
-  case Descending = -1
+enum Comparison: Int {
+  case ascending = 1
+  case same = 0
+  case descending = -1
   
-  init<T: Comparable>(first: T, second: T)
-  {
-    if first < second
-    {
-      self = .Ascending
-    }
-    else if first > second
-    {
-      self = .Descending
-    }
-    else
-    {
-      self = .Same
+  init<T: Comparable>(first: T, second: T) {
+    if first < second {
+      self = .ascending
+    } else if first > second {
+      self = .descending
+    } else {
+      self = .same
     }
   }
 }
 
-enum MovieOrdering: Equatable
-{
-  case None
-  case Title(ascending: Bool)
-  case Score(ascending: Bool)
-  case Year(ascending: Bool)
+enum MovieOrdering: Equatable {
+  case none
+  case byTitle(ascending: Bool)
+  case byScore(ascending: Bool)
+  case byYear(ascending: Bool)
   
   var title: String {
     switch self {
-    case .None:
+    case .none:
       return "none"
-    case .Title(let ascending):
+    case .byTitle(let ascending):
       return ascending ? "title ascending" : "title descending"
-    case .Score(let ascending):
+    case .byScore(let ascending):
       return ascending ? "score ascending" : "score descending"
-    case .Year(let ascending):
+    case .byYear(let ascending):
       return ascending ? "year ascending" : "year descending"
     }
   }  
 }
 
-func == (lhs: MovieOrdering, rhs: MovieOrdering) -> Bool
-{
+func == (lhs: MovieOrdering, rhs: MovieOrdering) -> Bool {
   switch (lhs, rhs) {
-  case (.None, .None):
+  case (.none, .none):
     return true
-  case let (.Title(lhsAscending), .Title(rhsAscending)):
+  case (.byTitle(let lhsAscending), .byTitle(let rhsAscending)):
     return lhsAscending == rhsAscending
-  case let (.Score(lhsAscending), .Score(rhsAscending)):
+  case (.byScore(let lhsAscending), .byScore(let rhsAscending)):
     return lhsAscending == rhsAscending
-  case let (.Year(lhsAscending), .Year(rhsAscending)):
+  case (.byYear(let lhsAscending), .byYear(let rhsAscending)):
     return lhsAscending == rhsAscending
   default:
     return false

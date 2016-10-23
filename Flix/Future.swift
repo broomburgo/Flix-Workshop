@@ -1,41 +1,35 @@
-
 import Foundation
 
-enum FutureState<T>
-{
-  case Incomplete
-  case Complete(T)
+enum FutureState<T> {
+  case incomplete
+  case complete(T)
 }
 
-class Future<T>
-{
-  private var state = FutureState<T>.Incomplete
-  private var callbacks: [T->()] = []
+class Future<T> {
+  fileprivate var state = FutureState<T>.incomplete
+  fileprivate var callbacks: [(T)->()] = []
   
-  func onComplete (callback: T -> ()) -> Future
-  {
+  @discardableResult func onComplete (_ callback: @escaping (T) -> ()) -> Future {
     switch state {
-    case .Incomplete:
+    case .incomplete:
       callbacks.append(callback)
       return self
-    case .Complete(let value):
+    case .complete(let value):
       callback(value)
       return self
     }
   }
   
-  func completeWith(value: T) -> Future
-  {
+  @discardableResult func completeWith(_ value: T) -> Future {
     switch state {
-    case .Incomplete:
-      state = .Complete(value)
-      for callback in callbacks
-      {
+    case .incomplete:
+      state = .complete(value)
+      for callback in callbacks {
         callback(value)
       }
       callbacks.removeAll()
       return self
-    case .Complete(_):
+    case .complete(_):
       return self
     }
   }

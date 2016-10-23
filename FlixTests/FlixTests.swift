@@ -8,15 +8,15 @@ class FlixTests: XCTestCase
 {
   func testMovieCreation()
   {
-    let optionalPath = NSBundle.mainBundle().pathForResource(fileName, ofType: nil)
+    let optionalPath = Bundle.main.path(forResource: fileName, ofType: nil)
     XCTAssertNotNil(optionalPath)
     
-    let optionalData = NSData(contentsOfFile: optionalPath!)
+    let optionalData = try? Data(contentsOf: URL(fileURLWithPath: optionalPath!))
     XCTAssertNotNil(optionalData)
     
-    let optionalElements = { (data: NSData) -> [[String:AnyObject]]? in
+    let optionalElements = { (data: Data) -> [[String:AnyObject]]? in
       do {
-        return try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as? [[String : AnyObject]]
+        return try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as? [[String : AnyObject]]
       }
       catch let error as NSError {
         print(error)
@@ -51,10 +51,10 @@ class FlixTests: XCTestCase
     let expectedValue = 3
     let wrongValue = 10
    
-    let futureExpectation1 = expectationWithDescription("futureExpectation1")
-    let futureExpectation2 = expectationWithDescription("futureExpectation2")
-    let futureExpectation3 = expectationWithDescription("futureExpectation3")
-    let futureExpectation4 = expectationWithDescription("futureExpectation4")
+    let futureExpectation1 = expectation(description: "futureExpectation1")
+    let futureExpectation2 = expectation(description: "futureExpectation2")
+    let futureExpectation3 = expectation(description: "futureExpectation3")
+    let futureExpectation4 = expectation(description: "futureExpectation4")
     
     let future1 = Future<Int>()
     
@@ -82,7 +82,7 @@ class FlixTests: XCTestCase
       futureExpectation4.fulfill()
     }
     
-    waitForExpectationsWithTimeout(1, handler: nil)
+    waitForExpectations(timeout: 1, handler: nil)
   }
   
   func testTrimString()
@@ -162,7 +162,7 @@ class FlixTests: XCTestCase
   }
 }
 
-func assertMovies(movies: [Movie])
+func assertMovies(_ movies: [Movie])
 {
   XCTAssertEqual(movies.count, 3)
   
@@ -204,7 +204,7 @@ func assertMovies(movies: [Movie])
 }
 
 func assertMovie(
-  movie: Movie,
+  _ movie: Movie,
   title: String,
   directors: [String],
   writers: [String],

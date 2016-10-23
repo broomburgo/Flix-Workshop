@@ -1,94 +1,77 @@
 
 import Foundation
 
-extension Optional
-{
-  func getOrElse(@autoclosure elseValue: () -> Wrapped) -> Wrapped
-  {
+extension Optional {
+	func getOrElse(_ elseValue: @autoclosure () -> Wrapped) -> Wrapped {
     switch self {
-    case .None:
+    case .none:
       return elseValue()
-    case .Some(let value):
+    case .some(let value):
       return value
     }
   }
   
-  func applyIfPossible(@noescape apply: Wrapped -> ())
-  {
+  func applyIfPossible(_ apply: (Wrapped) -> ()) {
     switch self {
-    case .None:
+    case .none:
       return
-    case .Some(let value):
+    case .some(let value):
       return apply(value)
     }
   }
 }
 
-extension Dictionary
-{
-  func valueForKey <T> (key: Key, asType: T.Type) -> T?
-  {
+extension Dictionary {
+  func value <T> (at key: Key, as type: T.Type) -> T? {
     return self[key] as? T
   }
 }
 
-extension String
-{
-  func splitWithSeparator(separator: Character) -> [String]
-  {
+extension String {
+  func split(with separator: Character) -> [String] {
     return characters
       .split { $0 == separator }
       .map { String($0) }
   }
   
-  func trim(stringToTrim: String) -> String
-  {
+  func trim(_ stringToTrim: String) -> String {
     guard stringToTrim.characters.count > 0 else { return self }
     let stepsToAdvanceStartIndex = hasPrefix(stringToTrim) ? stringToTrim.characters.count : 0
     let stepsToAdvanceEndIndex = hasSuffix(stringToTrim) ? stringToTrim.characters.count : 0
-    return String(characters[startIndex.advancedBy(stepsToAdvanceStartIndex)..<endIndex.advancedBy(-stepsToAdvanceEndIndex)])
+    return String(characters[characters.index(startIndex, offsetBy: stepsToAdvanceStartIndex)..<characters.index(endIndex, offsetBy: -stepsToAdvanceEndIndex)])
   }
 }
 
-extension NSComparisonResult
-{
-  init(withComparison comparison: Comparison)
-  {
+extension ComparisonResult {
+  init(withComparison comparison: Comparison) {
     switch comparison {
-    case .Ascending:
-      self = .OrderedAscending
-    case .Same:
-      self = .OrderedSame
-    case .Descending:
-      self = .OrderedDescending
+    case .ascending:
+      self = .orderedAscending
+    case .same:
+      self = .orderedSame
+    case .descending:
+      self = .orderedDescending
     }
   }
 }
 
-extension Comparison
-{
-  init(withComparisonResult comparisonResult: NSComparisonResult)
-  {
-    switch comparisonResult
-    {
-    case .OrderedAscending:
-      self = .Ascending
-    case .OrderedSame:
-      self = .Same
-    case .OrderedDescending:
-      self = .Descending
+extension Comparison {
+  init(withComparisonResult comparisonResult: ComparisonResult) {
+    switch comparisonResult {
+    case .orderedAscending:
+      self = .ascending
+    case .orderedSame:
+      self = .same
+    case .orderedDescending:
+      self = .descending
     }
   }
 }
 
-extension SequenceType
-{
-  func find(predicate: Self.Generator.Element -> Bool) -> Self.Generator.Element?
-  {
-    for element in self
-    {
-      if predicate(element)
-      {
+extension Sequence {
+  func find(_ predicate: (Self.Iterator.Element) -> Bool) -> Self.Iterator.Element? {
+    for element in self {
+      if predicate(element) {
         return element
       }
     }
@@ -96,8 +79,7 @@ extension SequenceType
   }
 }
 
-extension Array
-{
+extension Array {
   var head: Element? {
     return first
   }
@@ -107,31 +89,28 @@ extension Array
     return Array(self[1..<count])
   }
   
-  func reduce (@noescape reducer: (Element, Element) -> Element) -> Element?
-  {
+  func accumulate (with reducer: (Element, Element) -> Element) -> Element? {
     guard let head = head else { return nil }
     guard let tail = tail else { return head }
-    return tail.reduce(head, combine: reducer)
+    return tail.reduce(head, reducer)
   }
+
+	func appending (_ element: Element) -> Array {
+		var m_self = self
+		m_self.append(element)
+		return m_self
+	}
 }
 
-extension Array where Element: Comparable
-{
-  func removeDuplicates() -> Array
-  {
+extension Array where Element: Comparable {
+  func removeDuplicates() -> Array {
     return self
-      .sort { $0 < $1 }
-      .reduce([]) { (var accumulator, element) in
-        if let
-          last = accumulator.last
-          where last == element
-        {
+      .sorted { $0 < $1 }
+      .reduce([]) { (accumulator, element) in
+        if let last = accumulator.last, last == element {
           return accumulator
-        }
-        else
-        {
-          accumulator.append(element)
-          return accumulator
+        } else {
+          return accumulator.appending(element)
         }
     }
   }

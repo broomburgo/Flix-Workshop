@@ -5,8 +5,7 @@ let flixColor = UIColor(red: 0.3, green: 0.1, blue: 0.6, alpha: 1)
 let actionColor = UIColor(red: 0.95, green: 0.85, blue: 0.3, alpha: 1)
 let cellTextColor = UIColor(white: 0.1, alpha: 1)
 
-func movieListChangeGroupsWithMovies(movies: [Movie]) -> [[MovieListChangeGroup]]
-{
+func movieListChangeGroupsWithMovies(_ movies: [Movie]) -> [[MovieListChangeGroup]] {
   return [
     [
       MovieListChangeGroup(
@@ -14,12 +13,12 @@ func movieListChangeGroupsWithMovies(movies: [Movie]) -> [[MovieListChangeGroup]
         title: "Order by",
         multipleSelection: false,
         references: [
-          MovieOrdering.Title(ascending: true).referenceWithIdentifier("orderByTitle1"),
-          MovieOrdering.Title(ascending: false).referenceWithIdentifier("orderByTitle2"),
-          MovieOrdering.Year(ascending: true).referenceWithIdentifier("orderByYear1"),
-          MovieOrdering.Year(ascending: false).referenceWithIdentifier("orderByYear2"),
-          MovieOrdering.Score(ascending: true).referenceWithIdentifier("orderByScore1"),
-          MovieOrdering.Score(ascending: false).referenceWithIdentifier("orderByScore2")
+          MovieOrdering.byTitle(ascending: true).referenceWithIdentifier("orderByTitle1"),
+          MovieOrdering.byTitle(ascending: false).referenceWithIdentifier("orderByTitle2"),
+          MovieOrdering.byYear(ascending: true).referenceWithIdentifier("orderByYear1"),
+          MovieOrdering.byYear(ascending: false).referenceWithIdentifier("orderByYear2"),
+          MovieOrdering.byScore(ascending: true).referenceWithIdentifier("orderByScore1"),
+          MovieOrdering.byScore(ascending: false).referenceWithIdentifier("orderByScore2")
         ]
       )
     ],
@@ -36,7 +35,7 @@ func movieListChangeGroupsWithMovies(movies: [Movie]) -> [[MovieListChangeGroup]
         title: "Min year",
         multipleSelection: false,
         references: yearsFromMovies(movies)
-          .sort { $0 > $1 }
+          .sorted { $0 > $1 }
           .getFilterReferences { movie, year in movie.year >= year }
       )
     ],

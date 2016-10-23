@@ -1,24 +1,23 @@
 
 import Foundation
 
-protocol StringRepresetable
-{
+protocol StringRepresentable {
   var stringValue: String { get }
 }
 
-extension String: StringRepresetable
+extension String: StringRepresentable
 {
   var stringValue: String { return self }
 }
 
-extension Int: StringRepresetable
+extension Int: StringRepresentable
 {
   var stringValue: String { return String(self) }
 }
 
-extension Array where Element: StringRepresetable
+extension Array where Element: StringRepresentable
 {
-  func getFilterReferences (filter: (Movie, Element) -> Bool) -> [MovieListChangeReference]
+  func getFilterReferences (_ filter: @escaping (Movie, Element) -> Bool) -> [MovieListChangeReference]
   {
     return self
       .map { element in

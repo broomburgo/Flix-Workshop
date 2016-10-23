@@ -1,13 +1,12 @@
 
 import Foundation
 
-typealias MovieFilter = Movie -> Bool
+typealias MovieFilter = (Movie) -> Bool
 typealias MovieComparator = (Movie,Movie) -> Comparison
-typealias MovieListChange = [Movie] -> [Movie]
+typealias MovieListChange = ([Movie]) -> [Movie]
 typealias MovieListChangeIdentifier = String
 
-struct MovieListChangeReference
-{
+struct MovieListChangeReference {
   let identifier: MovieListChangeIdentifier
   let title: String
   let filter: MovieFilter?
@@ -17,8 +16,7 @@ struct MovieListChangeReference
     return movieListChange(filter: filter, comparator: comparator)
   }
   
-  init(identifier: MovieListChangeIdentifier, title: String, filter: MovieFilter?, comparator: MovieComparator?)
-  {
+  init(identifier: MovieListChangeIdentifier, title: String, filter: MovieFilter?, comparator: MovieComparator?) {
     self.identifier = identifier
     self.title = title
     self.filter = filter
@@ -26,15 +24,13 @@ struct MovieListChangeReference
   }
 }
 
-struct MovieListChangeGroup
-{
+struct MovieListChangeGroup {
   let identifier: MovieListChangeIdentifier
   let title: String
   let multipleSelection: Bool
   let references: [MovieListChangeReference]
   
-  init(identifier: MovieListChangeIdentifier, title: String, multipleSelection: Bool, references: [MovieListChangeReference])
-  {
+  init(identifier: MovieListChangeIdentifier, title: String, multipleSelection: Bool, references: [MovieListChangeReference]) {
     self.identifier = identifier
     self.title = title
     self.multipleSelection = multipleSelection
@@ -42,28 +38,26 @@ struct MovieListChangeGroup
   }
 }
 
-extension MovieOrdering
-{
+extension MovieOrdering {
   var comparator: MovieComparator {
     switch self {
     
-    case .None:
+    case .none:
       return movieComparatorSame()
     
-    case .Title(ascending: let ascending):
+    case .byTitle(ascending: let ascending):
       return movieComparatorFor(ascending) { Comparison(withComparisonResult:$0.title.compare($1.title)) }
     
-    case .Year(ascending: let ascending):
+    case .byYear(ascending: let ascending):
       return movieComparatorFor(ascending) { Comparison(first: $0.year, second: $1.year) }
     
-    case .Score(ascending: let ascending):
+    case .byScore(ascending: let ascending):
       return movieComparatorFor(ascending) { Comparison(first: $0.score, second: $1.score) }
 
     }
   }
   
-  func referenceWithIdentifier(identifier: MovieListChangeIdentifier) -> MovieListChangeReference
-  {
+  func referenceWithIdentifier(_ identifier: MovieListChangeIdentifier) -> MovieListChangeReference {
     return MovieListChangeReference(
       identifier: identifier,
       title: title,

@@ -1,8 +1,7 @@
 
 import UIKit
 
-class MovieCell: UITableViewCell
-{
+class MovieCell: UITableViewCell {
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var yearLabel: UILabel!
   @IBOutlet weak var scoreLabel: UILabel!
@@ -17,14 +16,12 @@ class MovieCell: UITableViewCell
   static let defaultHeight = Float(130)
   static let defaultIdentifier = "MovieCell"
   
-  static func cell(indentifier identifier: String) -> MovieCell
-  {
-    let nibElements = UINib(nibName: "MovieCell", bundle: nil).instantiateWithOwner(nil, options: nil)
+  static func cell(indentifier identifier: String) -> MovieCell {
+    let nibElements = UINib(nibName: "MovieCell", bundle: nil).instantiate(withOwner: nil, options: nil)
     return nibElements.first as! MovieCell
   }
   
-  func setMovie(movie: Movie) -> MovieCell
-  {
+  func setMovie(_ movie: Movie) -> MovieCell {
     stylize()
     
     titleLabel.text = movie.title
@@ -40,8 +37,7 @@ class MovieCell: UITableViewCell
     return self
   }
   
-  func stylize()
-  {
+  func stylize() {
     titleLabel.textColor = flixColor
   }
 }
